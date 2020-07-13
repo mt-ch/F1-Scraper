@@ -1,0 +1,10 @@
+.logo{
+    width: 10%;
+    height: 10%;
+}
+
+.toolbar{
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 63%, rgba(255,255,255,0) 100%);
+    opacity: 1;
+}

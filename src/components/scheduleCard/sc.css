@@ -1,0 +1,16 @@
+.info{
+    display: flex;
+
+  align-items: center;
+}
+
+.flag{
+    padding: 10px;
+    padding-top: 15px;
+}
+
+.track{
+    position: absolute;
+    right: 0;
+    padding-right: 50px
+}
