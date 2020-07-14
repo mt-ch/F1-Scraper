@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, ButtonGroup, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, styled, Box } from '@material-ui/core';
+import './resultsCard.css';
 
 function createData(pos, driver, time, points){
     return {pos, driver, time, points};
@@ -19,6 +20,9 @@ const rows = [
 
 const rowsC = [
     createQual(1, 'V.Bottas', '1:04.111', '1:03.015', '1:02.939	'),
+    createQual(2, 'L.Hamilton', '1:04.198', '1:03.096', '1:02.951'),
+    createQual(2, 'L.Hamilton', '1:04.198', '1:03.096', '1:02.951'),
+    createQual(2, 'L.Hamilton', '1:04.198', '1:03.096', '1:02.951'),
     createQual(2, 'L.Hamilton', '1:04.198', '1:03.096', '1:02.951'),
 ]
 
@@ -76,65 +80,67 @@ export class ausRes extends Component {
     render() {
         return (
             <MyBox>
-
-                    <div className="buttonSelection">
+                <div className="grid-container-table">
+                    <section className="buttonSelection">
                         <ButtonGroup>
                             <MyButton onClick={this.handleShow} variant={this.isContained}>Qualifying</MyButton>
                             <MyButton onClick={this.handleHide} variant={this.isOutline}>Race</MyButton>
                         </ButtonGroup>
-                    </div>
-                    {this.state.isNotActive ? <div>
-                        <MyTableContainer>
-                            <Table>
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell align="right">Pos</TableCell>
-                                        <TableCell align="right">Driver</TableCell>
-                                        <TableCell align="right">Time</TableCell>
-                                        <TableCell align="right">Pts</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {rows.map((row) => (
-                                        <TableRow key={row.pos}>
-                                            <TableCell>{row.pos}</TableCell>
-                                            <TableCell align="right">{row.driver}</TableCell>
-                                            <TableCell align="right">{row.time}</TableCell>
-                                            <TableCell align="right">{row.points}</TableCell>
+                    </section>
+                    <section className="table">
+                        {this.state.isNotActive ? <div>
+                            <MyTableContainer>
+                                <Table>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell align="right">Pos</TableCell>
+                                            <TableCell align="right">Driver</TableCell>
+                                            <TableCell align="right">Time</TableCell>
+                                            <TableCell align="right">Pts</TableCell>
                                         </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </MyTableContainer>
-                    </div>: null }
-                    
-                    {this.state.isActive ? <div>
-                        <MyTableContainer>
-                            <Table>
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell align="right">Pos</TableCell>
-                                        <TableCell align="right">Driver</TableCell>
-                                        <TableCell align="right">Q1</TableCell>
-                                        <TableCell align="right">Q2</TableCell>
-                                        <TableCell align="right">Q3</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {rowsC.map((row) => (
-                                        <TableRow key={row.pos}>
-                                            <TableCell>{row.pos}</TableCell>
-                                            <TableCell align="right">{row.driver}</TableCell>
-                                            <TableCell align="right">{row.q1}</TableCell>
-                                            <TableCell align="right">{row.q2}</TableCell>
-                                            <TableCell align="right">{row.q3}</TableCell>
+                                    </TableHead>
+                                    <TableBody>
+                                        {rows.map((row) => (
+                                            <TableRow key={row.pos}>
+                                                <TableCell>{row.pos}</TableCell>
+                                                <TableCell align="right">{row.driver}</TableCell>
+                                                <TableCell align="right">{row.time}</TableCell>
+                                                <TableCell align="right">{row.points}</TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </MyTableContainer>
+                        </div>: null }
+                        
+                        {this.state.isActive ? <div>
+                            <MyTableContainer>
+                                <Table>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell align="right">Pos</TableCell>
+                                            <TableCell align="right">Driver</TableCell>
+                                            <TableCell align="right">Q1</TableCell>
+                                            <TableCell align="right">Q2</TableCell>
+                                            <TableCell align="right">Q3</TableCell>
                                         </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </MyTableContainer>
-                    </div>: null }
-
+                                    </TableHead>
+                                    <TableBody>
+                                        {rowsC.map((row) => (
+                                            <TableRow key={row.pos}>
+                                                <TableCell>{row.pos}</TableCell>
+                                                <TableCell align="right">{row.driver}</TableCell>
+                                                <TableCell align="right">{row.q1}</TableCell>
+                                                <TableCell align="right">{row.q2}</TableCell>
+                                                <TableCell align="right">{row.q3}</TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </MyTableContainer>
+                        </div>: null }
+                    </section>
+                </div>
             </MyBox>
         )
     }

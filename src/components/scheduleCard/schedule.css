@@ -1,0 +1,85 @@
+.grid-container-schedule {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: 
+    "roundInfo track";
+    max-height: 100vh;
+    padding: 0em;
+    margin: 1em;
+  }
+
+.grid-container-round{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 0.1fr 0.5fr 0.3fr 0.5fr;
+  grid-template-areas: 
+  "greeting greeting"
+  "date date"
+  "country  flag"
+  "raceName raceName";
+  max-height: 100vh;
+  margin: 0em;
+}
+
+.roundInfo{
+    grid-area: roundInfo;
+}
+
+.greeting{
+    grid-area: greeting;
+  }
+
+.date{
+  grid-area: date;
+  justify-self: start;
+}
+
+.country{
+  grid-area: country;
+  justify-self: start;
+}
+
+.flag{
+  grid-area: flag;
+  align-self: center;
+  margin: 1em;
+}
+
+.img{
+  width: 100%;
+  max-width: 50px;
+  height: auto;
+}
+
+.raceName{
+  grid-area: raceName;
+  align-self: start;
+}
+
+.track{
+  grid-area: track;
+  align-self: center;
+}
+
+.bg{
+    position: relative; 
+    display: flex;
+}
+
+.bg::before{
+  content: "";
+  background-image: url('../../assets/textureCard.jpg');
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.25;  
+  filter: grayscale(100%);
+}
+
+.card{
+  display: grid;
+  margin: 1em;
+}

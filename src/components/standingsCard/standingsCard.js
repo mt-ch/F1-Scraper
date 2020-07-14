@@ -146,7 +146,6 @@ export class standingsCard extends Component {
                                         <TbHeader>
                                             <TableRow>
                                                 <TbCell align="right">Rank</TbCell>
-                                                <TbCell align="right">Nat</TbCell>
                                                 <TbCell align="right">Driver</TbCell>
                                                 <TbCell align="right">Points</TbCell>
                                                 <TbCell align="right">Wins</TbCell>
@@ -156,9 +155,9 @@ export class standingsCard extends Component {
                                             {driverStand.map((row) => (
                                                 <TableRow key={row.rank}>
                                                     <TbCell>{row.rank}</TbCell>
-                                                    <TbCell>
+                                                    {/* <TbCell>
                                                         <img src={getFlag(row.country)}/>
-                                                    </TbCell>
+                                                    </TbCell> */}
                                                     <TbCell align="right">{row.driver}</TbCell>
                                                     <TbCell align="right">{row.points}</TbCell>
                                                     <TbCell align="right">{row.wins}</TbCell>

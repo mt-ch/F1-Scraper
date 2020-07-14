@@ -1,0 +1,56 @@
+.grid-container-results{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 0.1fr 4fr;
+    grid-template-areas: 
+        "title  ."
+        "results    results";
+    height: 70vh;
+    margin: 0em;
+}
+
+.title{
+    grid-area: title;
+}
+
+.results{
+    grid-area: results;
+}
+
+.grid-container-table{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 5fr;
+    grid-template-areas: 
+        "button button"
+        "table table";
+    height: 60vh;
+    margin: 0em;
+}
+
+.buttonSelection{
+    grid-area: button;
+}
+
+.table{
+    grid-area: table;
+}
+
+.grid-container-resTab{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 4fr;
+    grid-template-areas: 
+        "tab tab"
+        "panel panel";
+    height: 60vh;
+    margin: 0em;
+}
+
+.tab{
+    grid-area: tab;
+}
+
+.panel{
+    grid-area: panel;
+}
