@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import AusFlag from '../../assets/austriaFlag.png';
 import './schedule.css';
 import Test from './test';
+import { Typography } from '@material-ui/core';
 
 export class austriaRndOne extends Component {
     render() {
@@ -10,25 +11,25 @@ export class austriaRndOne extends Component {
                 <section className="roundInfo">
                     <div className="grid-container-round">
                         <section className="greeting">
-                            <h3>Up next...</h3>
+                            <Typography variant="h6">Up next...</Typography>
                         </section>
                         <section className="date">
-                            <h2>Round 1 | 03-05 July</h2>
+                            <Typography variant="h5">Round 1 | 03-05 July</Typography>
                         </section>
                         <section className="country">
-                            <h2>Austria</h2>
+                            <Typography variant="h2">Austria</Typography>
                         </section>
                         <section className="flag">
                             <img className="img" src={AusFlag}/>
                         </section>
                         <section className="raceName">
-                            <h2>Formula 1 Rolex Grosser Pries Von Österreich 2020</h2>
+                            <Typography variant="h5">Formula 1 Rolex Grosser Pries Von Österreich 2020</Typography>
                         </section>
                     </div>
                 </section>   
-                <div className="track">
+                <section className="track">
                     <Test/>
-                </div>
+                </section>
             </div>
         )
     }

@@ -3,7 +3,7 @@ body{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif,;
-  background: white;
+  background: repeating-linear-gradient(45deg, rgb(240, 240, 240) 0px, rgb(240, 240, 240) 97px,rgb(235, 235, 235) 97px, rgb(235, 235, 235) 194px,rgb(230, 230, 230) 194px, rgb(230, 230, 230) 291px);
   margin: 0;
   height: 100vh;
 }

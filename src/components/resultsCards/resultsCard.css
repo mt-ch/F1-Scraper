@@ -6,7 +6,8 @@
         "title  ."
         "results    results";
     height: 70vh;
-    margin: 0em;
+    margin-left: 1em;
+    margin-right: 1em;
 }
 
 .title{
@@ -54,3 +55,8 @@
 .panel{
     grid-area: panel;
 }
+
+.card{
+    display: grid;
+    margin: 1em;
+  }

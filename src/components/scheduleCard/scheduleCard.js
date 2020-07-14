@@ -34,22 +34,22 @@ export class scheduleCard extends Component {
     render() {
         return (
             <div className="card">
-            <MyCard>
-                <div className="bg">
-                    <CardContent>                    
-                        <Carousel
-                            next={ () => {/* Do stuff */} }
-                            prev={ () => {/* Do other stuff */} }
-                            indicators={false}
-                            autoPlay={false}
-                        >
-                            <AustriaRndOne/> 
-                            <AustriaRndOne/> 
-                            <AustriaRndOne/> 
-                        </Carousel>
-                    </CardContent>
-                </div>
-            </MyCard>
+                <MyCard>
+                    <div className="bg">
+                        <CardContent>                    
+                            <Carousel
+                                next={ () => {/* Do stuff */} }
+                                prev={ () => {/* Do other stuff */} }
+                                indicators={false}
+                                autoPlay={false}
+                            >
+                                <AustriaRndOne/> 
+                                <AustriaRndOne/> 
+                                <AustriaRndOne/> 
+                            </Carousel>
+                        </CardContent>
+                    </div>
+                </MyCard>
             </div>
         )
     }
