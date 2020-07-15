@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { Card, CardContent, styled, Button, 
          ButtonGroup, Table, TableBody, TableCell, TableContainer,
          TableHead, TableRow, Paper, Grid, CardMedia} from '@material-ui/core';
-import './standingsCard.css';
+import './css/standings.scss';
 import British from '../../assets/British.png'
+import Axios from 'axios';
 
 const MyCard = styled(Card)({
     background: '#00000032',
@@ -85,116 +86,54 @@ function getFlag(nation) {
 export class standingsCard extends Component {
 
     async componentDidMount(){
-        getDriverStandings();
-        getConstructorStandings();
+        Axios.get('/driverStd')
+            .then(res => {
+                console.log(res.data)
+                this.setState({
+                    standingsD:  res.data
+                })
+            })
+            .catch(err => console.log(err));
     }
 
-    isContained = "contained";
-    isOutline = "outline";
-
-    state = {
-        isActive:true,
-        isNotActive:false,
-     }
-   
-     handleShow = ()=>{
-        this.isContained = "contained";
-        this.isOutline = "outlined";
-         this.setState({
-             isActive: true,
-             isNotActive: false,
-         })
-     }
-   
-     handleHide = () =>{
-        this.isContained = "outlined";
-        this.isOutline = "contained";
-         this.setState({
-             isActive: false,
-             isNotActive: true,
-         })
-     }
-
     render() {
-        
         return (
-            <div className="card">
+            <div id="stCard">
                 <MyCard>
-                    <CardContent>
-                        <Grid 
-                            container
-                            direction="column"
-                        >
-                            <Grid item xs={12}>
-                                <h2 className="title">
-                                    2020 Standings
-                                </h2>
-                            </Grid> 
-                            <Grid item xs={12}>
-                                <div className="buttonSelection">
-                                <ButtonGroup>
-                                    <MyButton onClick={this.handleShow} variant={this.isContained}>Driver</MyButton>
-                                    <MyButton onClick={this.handleHide} variant={this.isOutline}>Constructor</MyButton>
-                                </ButtonGroup>
-                                </div>
-                            </Grid>
-                            <Grid item xs={12}>
-                                {this.state.isActive ? <div>
-                                    <TableContainer component={Paper}>
-                                        <Table size="small">
-                                            <TbHeader>
-                                                <TableRow>
-                                                    <TbCell align="right">Rank</TbCell>
-                                                    <TbCell align="right">Driver</TbCell>
-                                                    <TbCell align="right">Points</TbCell>
-                                                    <TbCell align="right">Wins</TbCell>
-                                                </TableRow>
-                                            </TbHeader>
-                                            <TableBody>
-                                                {driverStand.map((row) => (
-                                                    <TableRow key={row.rank}>
-                                                        <TbCell>{row.rank}</TbCell>
-                                                        {/* <TbCell>
-                                                            <img src={getFlag(row.country)}/>
-                                                        </TbCell> */}
-                                                        <TbCell align="right">{row.driver}</TbCell>
-                                                        <TbCell align="right">{row.points}</TbCell>
-                                                        <TbCell align="right">{row.wins}</TbCell>
-                                                    </TableRow>
-                                                ))}
-                                            </TableBody>
-                                        </Table>
-                                    </TableContainer>
-                                </div>: null }
-                            </Grid>
-                            <Grid item>
-                                {this.state.isNotActive ? <div>
+                    <div id="">
+                        <CardContent>
+                            <h2 id="title">
+                                2020 Standings
+                            </h2>
+                      
                                 <TableContainer>
-                                    <Table>
-                                        <TableHead>
+                                    <Table size="small">
+                                        <TbHeader>
                                             <TableRow>
                                                 <TbCell align="right">Rank</TbCell>
-                                                <TbCell align="right">Constructor</TbCell>
+                                                <TbCell align="right">Driver</TbCell>
                                                 <TbCell align="right">Points</TbCell>
-                                                <TbCell align="right">Wins</TbCell>  
+                                                <TbCell align="right">Wins</TbCell>
                                             </TableRow>
-                                        </TableHead>
+                                        </TbHeader>
                                         <TableBody>
-                                            {constructorStand.map((row) => (
+                                            {driverStand.map((row) => (
                                                 <TableRow key={row.rank}>
                                                     <TbCell>{row.rank}</TbCell>
-                                                    <TbCell align="right">{row.contructor}</TbCell>
+                                                    {/* <TbCell>
+                                                        <img src={getFlag(row.country)}/>
+                                                    </TbCell> */}
+                                                    <TbCell align="right">{row.driver}</TbCell>
                                                     <TbCell align="right">{row.points}</TbCell>
                                                     <TbCell align="right">{row.wins}</TbCell>
-                                                    <TbCell align="right">{row.podiums}</TbCell>
                                                 </TableRow>
                                             ))}
                                         </TableBody>
                                     </Table>
-                                </TableContainer></div>: null }
-                            </Grid>                       
-                        </Grid>
-                    </CardContent>
+                                </TableContainer>
+               
+                        </CardContent>
+                    </div>
                 </MyCard>
             </div>    
         )
@@ -202,3 +141,29 @@ export class standingsCard extends Component {
 }
 
 export default standingsCard
+
+{/* <div>
+    <TableContainer>
+        <Table>
+            <TableHead>
+                <TableRow>
+                    <TbCell align="right">Rank</TbCell>
+                    <TbCell align="right">Constructor</TbCell>
+                    <TbCell align="right">Points</TbCell>
+                    <TbCell align="right">Wins</TbCell>  
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                {constructorStand.map((row) => (
+                    <TableRow key={row.rank}>
+                        <TbCell>{row.rank}</TbCell>
+                        <TbCell align="right">{row.contructor}</TbCell>
+                        <TbCell align="right">{row.points}</TbCell>
+                        <TbCell align="right">{row.wins}</TbCell>
+                        <TbCell align="right">{row.podiums}</TbCell>
+                    </TableRow>
+                ))}
+            </TableBody>
+        </Table>
+    </TableContainer>
+</div> */}

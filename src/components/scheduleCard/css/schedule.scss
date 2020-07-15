@@ -1,0 +1,93 @@
+// SASS theme
+
+// variables
+$colors: (
+    primary: #574f7d,
+    primary-light: lighten(#574f7d, 40%),
+    primary-dark: darken(#574f7d, 40%),
+    accent: #7e0000,
+    text: rgb(245, 245, 245)
+);
+
+$padding: 15px; 
+$borders: 15px;
+
+// fucntions
+@function color($color-name) {
+    @return map-get($colors, $color-name)
+}
+
+main{
+  section#info{
+    h1 {
+      font-size: 2em;
+      font-weight: bold;
+      color: color(text);
+    }
+    h2 {
+      font-size: 1.5em;
+      font-weight: normal;
+      color: color(text);
+    }
+    h3 {
+      font-size: 1.25em;
+      font-weight: lighter;
+      color: color(text);
+    }
+    #img {
+      width: 100%;
+      max-width: 50px;
+      height: auto;
+    }
+    #country-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.75fr 2fr;
+      grid-template-rows: auto;
+      grid-template-areas: "country flag track";
+    }
+    #country {
+      grid-area: country;
+      align-self: center;
+    }
+    #flag {
+      grid-area: flag;
+      align-self: center;
+      margin-top: 0.5em;
+      margin-left: 0.5em;
+    }
+    #track{
+      grid-area: track;
+      align-self: center;
+      width: 100%;
+      max-width: 50px;
+      height: auto;
+    }
+  } 
+}
+
+// Schedule Card
+body{
+  #bg{
+    position: relative; 
+    display: flex;
+  }
+
+  #bg::before{
+    content: "";
+    background-image: url('../../../assets/textureCard.jpg');
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.25;  
+    filter: grayscale(100%);
+  }
+
+  #card{
+    display: grid;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}

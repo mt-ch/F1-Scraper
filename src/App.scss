@@ -1,0 +1,61 @@
+// SASS theme
+
+// variables
+$colors: (
+    primary: #574f7d,
+    primary-light: lighten(#574f7d, 40%),
+    primary-dark: darken(#574f7d, 40%),
+    accent: #7e0000,
+);
+
+$padding: 15px; 
+$borders: 15px;
+
+// fucntions
+// get color
+@function color($color-name) {
+    @return map-get($colors, $color-name)
+}
+
+html,
+body{
+  height: 100%;
+}
+
+body{
+    background: color(primary);
+}
+
+.grid-container {
+//  display: grid;
+//   grid-template-columns: 1fr;
+//   grid-template-rows: 1fr 1fr 1fr 1fr;
+//   grid-template-areas: 
+//     "nav"
+//     "schedule"
+//     "results"
+//     "driver";
+//  margin: 0em;
+}
+
+.schedule{
+//   grid-area: schedule;
+}
+
+header{
+  //grid-area: nav;
+}
+
+.results{
+ // grid-area: results;
+}
+
+.standings{
+ // grid-area: standings;
+  /* background: green; */
+}
+
+.drivers{
+ // grid-area: driver;
+  /* background: yellow; */
+}

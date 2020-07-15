@@ -1,0 +1,28 @@
+body #standingsBg {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body #standingsBg::before {
+  content: "";
+  background-image: url("../../../assets/textureCard.jpg");
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.25;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+
+body #standingsCard {
+  display: -ms-grid;
+  display: grid;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+/*# sourceMappingURL=standingsCard.css.map */

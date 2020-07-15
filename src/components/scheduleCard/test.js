@@ -28,7 +28,7 @@ function Box(props) {
 export class test extends Component {
     render() {
         return (
-            <Canvas camera={{ fov: 75, position: [0, 0, 5] }} colorManagement style={{height:200,width: 200}}>
+            <Canvas camera={{ fov: 60, position: [0, 0, 5] }} colorManagement style={{height:100,width: 150}}>
                 <Box position={[0, 0, 0]} rotation={[-1, 0, 0]}/>
             </Canvas>
         )

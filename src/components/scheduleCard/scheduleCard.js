@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Card, CardContent, styled} from '@material-ui/core';
 import Carousel from 'react-material-ui-carousel'
-import AustriaRndOne from './austriaRndOne';
+import AustriaRndOne from './rounds/austriaRndOne';
+import AustriaRndTwo from './rounds/austriaRndTwo';
+import HungaryRndThree from './rounds/hungaryRndThree';
+import './css/schedule.scss'; 
 
 const MyCard = styled(Card)({
     background: '#00000032',
@@ -33,9 +36,9 @@ const MyCard = styled(Card)({
 export class scheduleCard extends Component {
     render() {
         return (
-            <div className="card">
+            <div id="card">
                 <MyCard>
-                    <div className="bg">
+                    <div id="bg">
                         <CardContent>                    
                             <Carousel
                                 next={ () => {/* Do stuff */} }
@@ -44,8 +47,8 @@ export class scheduleCard extends Component {
                                 autoPlay={false}
                             >
                                 <AustriaRndOne/> 
-                                <AustriaRndOne/> 
-                                <AustriaRndOne/> 
+                                <AustriaRndTwo/>
+                                <HungaryRndThree/>
                             </Carousel>
                         </CardContent>
                     </div>

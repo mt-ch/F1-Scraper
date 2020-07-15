@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 
 //import components
 import NavBar from './components/nav/navBar';
@@ -10,24 +10,22 @@ import DriversCard from './components/driversCard/driversCard';
 
 function App() {
   return (
-    <div className="App">
-      <div className="grid-container">
-        <header>
-          <NavBar/>
-        </header>
-        <section className="schedule">
-          <ScheduleCard/>
-        </section>
-        <section className="results">
-           <ResultsCard/> 
-        </section>
-        <section className="drivers">
-          {/* <DriversCard/> */}
-        </section>
-        <section className="standings">
-          <StandingsCard/>
-        </section>
-      </div>
+    <div className="grid-container">
+      <header>
+        <NavBar/>
+      </header>
+      <section className="schedule">
+        <ScheduleCard/>
+      </section>
+      <section className="results">
+        {/* <ResultsCard/>  */}
+      </section>
+      <section className="drivers">
+        {/* <DriversCard/> */}
+      </section>
+      <section className="standings">
+        <StandingsCard/>
+      </section>
     </div>
   );
 }
