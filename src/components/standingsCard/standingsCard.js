@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { Card, CardContent, styled, Button, 
          ButtonGroup, Table, TableBody, TableCell, TableContainer,
-         TableHead, TableRow, Paper, Grid, CardMedia} from '@material-ui/core';
+         TableHead, TableRow, TableFooter, TablePagination} from '@material-ui/core';
 import './css/standings.scss';
-import British from '../../assets/British.png'
-import Axios from 'axios';
+import axios from 'axios';
 
 const MyCard = styled(Card)({
     background: '#00000032',
@@ -28,23 +27,19 @@ const MyButton = styled(Button)({
 })
 
 const TbHeader = styled(TableHead)({
-    
+    color: '#000000',
 })
 
 const TbCell = styled(TableCell)({
-
+    color: '#f5f5f5',
 })
-
-const Flag = styled(CardMedia)({
-
-});
 
 function createDriverData(rank, country, firstName, driver, points, wins){
     return {rank, country, firstName, driver, points, wins};
 }
 
-function createDataConstructors(rank, contructor, points, wins){
-    return {rank, contructor, points, wins};
+function createDataConstructors(rank, constructor, points, wins){
+    return {rank, constructor, points, wins};
 }
 
 let driverStand = [];
@@ -62,6 +57,8 @@ async function getDriverStandings(){
             createDriverData(pos, country, firstName, lastName, pts, win)
         )
     }
+    console.table(driverStand)
+    return driverStand;
 }
 
 async function getConstructorStandings(){
@@ -76,56 +73,89 @@ async function getConstructorStandings(){
             createDataConstructors(pos, teamName, pts, win)
         )
     }
+    return constructorStand;
 }
 
-function getFlag(nation) {
-    let path = "../../assets/"+nation+".png";
-    return path;
+ function sliceName(name){
+    var str = name;
+    var res = str.slice(0, 1);
+    return res;
  }
 
+
 export class standingsCard extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          dStandings: [],
+          cStandings: [],
+          isLoading: false,
+          driver: true,
+          constructor: false  
+        };
+      }
 
-    async componentDidMount(){
-        Axios.get('/driverStd')
-            .then(res => {
-                console.log(res.data)
-                this.setState({
-                    standingsD:  res.data
-                })
-            })
-            .catch(err => console.log(err));
+      handleDriver = ()=>{
+        this.isContained = "contained";
+        this.isOutline = "outlined";
+         this.setState({
+            driver: true,
+            constructor: false
+         })
+     }
+
+     handleConstructor = ()=>{
+        this.isContained = "contained";
+        this.isOutline = "outlined";
+         this.setState({
+            driver: false,
+            constructor: true
+         })
+     }
+
+    componentDidMount(){
+        this.setState({ isLoading: true });
+        getDriverStandings()
+       // .then(data => console.log(data))
+        .then(data => this.setState({ dStandings: data, isLoading: false }));
+
+        getConstructorStandings()
+        .then(data => this.setState({ cStandings: data, isLoading: false }));
     }
-
+    
     render() {
-        return (
-            <div id="stCard">
+        const { dStandings, cStandings, isLoading, driver, constructor } = this.state;
+
+
+        if (isLoading) {
+            return <p>Loading ...</p>;
+          }
+        if (driver){
+            return(
+                <div id="card">
                 <MyCard>
-                    <div id="">
+                    <div id="bg">
                         <CardContent>
-                            <h2 id="title">
-                                2020 Standings
-                            </h2>
-                      
+                                <h2 id="title">2020 Standings</h2>
+                                <ButtonGroup id="button">
+                                    <MyButton onClick={this.handleDriver}>Driver</MyButton>
+                                    <MyButton onClick={this.handleConstructor}>Constructor</MyButton>
+                                </ButtonGroup>
                                 <TableContainer>
                                     <Table size="small">
                                         <TbHeader>
                                             <TableRow>
-                                                <TbCell align="right">Rank</TbCell>
+                                                <TbCell align="right">Pos</TbCell>
                                                 <TbCell align="right">Driver</TbCell>
                                                 <TbCell align="right">Points</TbCell>
-                                                <TbCell align="right">Wins</TbCell>
                                             </TableRow>
                                         </TbHeader>
                                         <TableBody>
-                                            {driverStand.map((row) => (
+                                            {dStandings.map(row => (
                                                 <TableRow key={row.rank}>
                                                     <TbCell>{row.rank}</TbCell>
-                                                    {/* <TbCell>
-                                                        <img src={getFlag(row.country)}/>
-                                                    </TbCell> */}
-                                                    <TbCell align="right">{row.driver}</TbCell>
+                                                    <TbCell align="right">{sliceName(row.firstName)}.{row.driver}</TbCell>
                                                     <TbCell align="right">{row.points}</TbCell>
-                                                    <TbCell align="right">{row.wins}</TbCell>
                                                 </TableRow>
                                             ))}
                                         </TableBody>
@@ -136,34 +166,49 @@ export class standingsCard extends Component {
                     </div>
                 </MyCard>
             </div>    
-        )
+            )
+        }
+        if (constructor){
+            return(
+                <div id="card">
+                    <MyCard>
+                        <div id="bg">
+                            <CardContent>
+                                    <h2 id="title">2020 Standings</h2>
+                                    <ButtonGroup id="button">
+                                        <MyButton onClick={this.handleDriver}>Driver</MyButton>
+                                        <MyButton onClick={this.handleConstructor}>Constructor</MyButton>
+                                    </ButtonGroup>
+                                    <div>
+                                        <TableContainer>
+                                            <Table>
+                                                <TableHead>
+                                                    <TableRow>
+                                                        <TbCell align="right">Rank</TbCell>
+                                                        <TbCell align="right">Constructor</TbCell>
+                                                        <TbCell align="right">Points</TbCell>
+                                                    </TableRow>
+                                                </TableHead>
+                                                <TableBody>
+                                                    {cStandings.map((row) => (
+                                                        <TableRow key={row.rank}>
+                                                            <TbCell>{row.rank}</TbCell>
+                                                            <TbCell align="right">{row.constructor}</TbCell>
+                                                            <TbCell align="right">{row.points}</TbCell>
+                                                        </TableRow>
+                                                    ))}
+                                                </TableBody>
+                                            </Table>
+                                        </TableContainer>
+                                    </div> 
+                            </CardContent>
+                        </div>
+                    </MyCard>
+                </div>
+            )
+        }
     }
 }
 
 export default standingsCard
 
-{/* <div>
-    <TableContainer>
-        <Table>
-            <TableHead>
-                <TableRow>
-                    <TbCell align="right">Rank</TbCell>
-                    <TbCell align="right">Constructor</TbCell>
-                    <TbCell align="right">Points</TbCell>
-                    <TbCell align="right">Wins</TbCell>  
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                {constructorStand.map((row) => (
-                    <TableRow key={row.rank}>
-                        <TbCell>{row.rank}</TbCell>
-                        <TbCell align="right">{row.contructor}</TbCell>
-                        <TbCell align="right">{row.points}</TbCell>
-                        <TbCell align="right">{row.wins}</TbCell>
-                        <TbCell align="right">{row.podiums}</TbCell>
-                    </TableRow>
-                ))}
-            </TableBody>
-        </Table>
-    </TableContainer>
-</div> */}

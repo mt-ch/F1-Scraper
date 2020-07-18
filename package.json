@@ -43,5 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000/reactapp-325a7/europe-west1/api/"
+  "proxy": "https://europe-west1-reactapp-325a7.cloudfunctions.net/api"
 }

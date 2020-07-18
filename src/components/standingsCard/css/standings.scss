@@ -1,10 +1,10 @@
 body{
-  #standingsBg{
+  #bg{
     position: relative; 
     display: flex;
   }
 
-  #standingsBg::before{
+  #bg::before{
     content: "";
     background-image: url('../../../assets/textureCard.jpg');
     background-size: cover;
@@ -17,10 +17,25 @@ body{
     filter: grayscale(100%);
   }
 
-  #stCard{
+  #card{
     display: grid;
     margin-top: 1em;
     margin-left: 1em;
     margin-right: 1em;
+  }
+
+  h2{
+    color: #f5f5f5;
+    font-size: 1.5em;
+  }
+
+  #button{
+    display: float;
+    left: 0;
+
+  }
+
+  #title{
+  
   }
 }
