@@ -42,23 +42,61 @@ body{
         margin-right: 1em;
     }
 
-    h2 {
-        font-size: 1.5em;
-        font-weight: normal;
-        color: color(text);
-      }
+    #driverInfo{
+        margin: 1em;
+        background:  #00000032;
+        display: grid;
+        grid-template-columns: 2fr 0.5fr 1fr;
+        grid-template-rows: 0.1fr 1fr;
+        grid-template-areas: 
+        "name   name  number"
+        "info   flag    dImg"
+        ;
 
-    #icon{
-        width: 100%;
-        max-width: 100px;
-        height: auto;
-    }
-
+        h2 {
+            font-size: 1.5em;
+            font-weight: normal;
+            color: color(text);
+          }
     
+        h3 {
+            font-size: 1.25em;
+            margin: 0;
+            font-weight: normal;
+            color: color(text);
+            grid-area: name;
+        }
+    
+        h4{
+            font-size: 1.25em;
+            font-weight: bold;
+            color: color(text);
+            margin: 0;
+            grid-area: number;
+        }
+        
+        #info{
+            grid-area: info;
 
-}
-
-#driverInfo{
-    margin: 1em;
-    background:  #00000032;
+            p {
+                font-size: 1em;
+                font-weight: normal;
+                color: color(text);
+                margin: 0;
+            }
+        }
+        
+        #icon{
+            width: 100%;
+            max-width: 100px;
+            height: auto;
+            grid-area: dImg;
+        }
+        #flag{
+            width: 100%;
+            max-width: 2em;
+            height: auto;
+            grid-area: flag;
+        }
+    }
 }

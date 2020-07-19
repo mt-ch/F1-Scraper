@@ -9,24 +9,39 @@ const MyCard = styled(Card)({
     borderColor: '#0000004B'
 });
 
-function createDriverInfo(id, first_Name, last_Name, nationality_, date, url_, number){
-    return{id, first_Name, last_Name, nationality_, date, url_, number};
+function createDriverInfo(id, first_Name, last_Name, nationality_, date, number, pos, pts, wins, cId, cName){
+    return{id, first_Name, last_Name, nationality_, date , number, pos, pts, wins, cId, cName};
 }
 
 let driverInfo = [];
 
+// async function getDriverInfo(){
+//     const url = "http://ergast.com/api/f1/2020/drivers.json";
+//     const response = await fetch(url);
+//     const data = await response.json();
+//     const { MRData: { DriverTable:  { season, Drivers}  } } = data;
+
+//     for (const {driverId: id, permanentNumber: number, url: link, givenName: firstName, familyName: lastName, dateOfBirth: dob, nationality: nation} of Drivers){
+//         driverInfo.push(
+//             createDriverInfo(id, firstName, lastName, nation, dob, link, number)
+//         )
+//     }
+//     return driverInfo
+// }
+
 async function getDriverInfo(){
-    const url = "http://ergast.com/api/f1/2020/drivers.json";
+    const url = "http://ergast.com/api/f1/current/driverStandings.json";
     const response = await fetch(url);
     const data = await response.json();
-    const { MRData: { DriverTable:  { season, Drivers}  } } = data;
+    const { MRData: { StandingsTable: { StandingsLists: [list]} } } = data;
+    const { season, round, DriverStandings } = list;
 
-    console.table(Drivers);
-    for (const {driverId: id, permanentNumber: number, url: link, givenName: firstName, familyName: lastName, dateOfBirth: dob, nationality: nation} of Drivers){
+    for (const {position: pos, points: pts, wins: win, Driver: {driverId: dId, permanentNumber: number, familyName: lastName, givenName: firstName, nationality: country, dateOfBirth: dob}, Constructors: [{constructorId: cId, name: cName }]} of DriverStandings){
         driverInfo.push(
-            createDriverInfo(id, firstName, lastName, nation, dob, link, number)
+            createDriverInfo(dId, firstName, lastName, country, dob, number, pos, pts, win, cId, cName)
         )
     }
+    console.table(driverInfo)
     return driverInfo
 }
 
@@ -53,12 +68,15 @@ export class driversCard extends Component {
                             <h2><strong>Drivers</strong></h2>
                             {dInfo.map(data => 
                             (   
-                                <div id="driverInfo">
-                                    <h5>{data.first_Name} {data.last_Name}</h5>
-                                    <p>{data.nationality_}</p>
-                                    <p>{data.number}</p>
-                                    <img id='icon' src={require(`../../assets/flags/${data.nationality_}.png`)}/>
-                                    <p>{data.date}</p>
+                                <div id="driverInfo" >
+                                    <h3>{data.first_Name} {data.last_Name}</h3>
+                                    <h4>{data.number}</h4>
+                                    <section id="info">
+                                        <p>{data.cName}</p>
+                                        <p>{data.nationality_}</p>
+                                    </section>
+                                    <img id='icon' src={require(`../../assets/teams/${data.cId}.png`)}/>
+                                    <img id='flag' src={require(`../../assets/flags/${data.nationality_}.png`)}/>
                                     <img id='icon' src={require(`../../assets/drivers/${data.id}.png`)}/>
                                 </div>
                             ))}

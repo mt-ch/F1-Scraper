@@ -36,4 +36,10 @@ body #button {
   display: float;
   left: 0;
 }
+
+body #flag {
+  width: 100%;
+  max-width: 50px;
+  height: auto;
+}
 /*# sourceMappingURL=standings.css.map */

@@ -26,20 +26,73 @@ body #card {
   margin-right: 1em;
 }
 
-body h2 {
+body #driverInfo {
+  margin: 1em;
+  background: #00000032;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 0.5fr 1fr;
+      grid-template-columns: 2fr 0.5fr 1fr;
+  -ms-grid-rows: 0.1fr 1fr;
+      grid-template-rows: 0.1fr 1fr;
+      grid-template-areas: "name   name  number" "info   flag    dImg";
+}
+
+body #driverInfo h2 {
   font-size: 1.5em;
   font-weight: normal;
   color: #f5f5f5;
 }
 
-body #icon {
+body #driverInfo h3 {
+  font-size: 1.25em;
+  margin: 0;
+  font-weight: normal;
+  color: #f5f5f5;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: name;
+}
+
+body #driverInfo h4 {
+  font-size: 1.25em;
+  font-weight: bold;
+  color: #f5f5f5;
+  margin: 0;
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: number;
+}
+
+body #driverInfo #info {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: info;
+}
+
+body #driverInfo #info p {
+  font-size: 1em;
+  font-weight: normal;
+  color: #f5f5f5;
+  margin: 0;
+}
+
+body #driverInfo #icon {
   width: 100%;
   max-width: 100px;
   height: auto;
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-area: dImg;
 }
 
-#driverInfo {
-  margin: 1em;
-  background: #00000032;
+body #driverInfo #flag {
+  width: 100%;
+  max-width: 2em;
+  height: auto;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: flag;
 }
 /*# sourceMappingURL=driverCard.css.map */

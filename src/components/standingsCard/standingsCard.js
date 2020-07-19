@@ -3,7 +3,6 @@ import { Card, CardContent, styled, Button,
          ButtonGroup, Table, TableBody, TableCell, TableContainer,
          TableHead, TableRow, TableFooter, TablePagination} from '@material-ui/core';
 import './css/standings.scss';
-import axios from 'axios';
 
 const MyCard = styled(Card)({
     background: '#00000032',
@@ -58,7 +57,6 @@ async function getDriverStandings(){
             createDriverData(pos, country, firstName, lastName, pts, win)
         )
     }
-    console.table(driverStand)
     return driverStand;
 }
 
@@ -117,7 +115,6 @@ export class standingsCard extends Component {
     componentDidMount(){
         this.setState({ isLoading: true });
         getDriverStandings()
-       // .then(data => console.log(data))
         .then(data => this.setState({ dStandings: data, isLoading: false }));
 
         getConstructorStandings()
@@ -156,7 +153,7 @@ export class standingsCard extends Component {
                                             {dStandings.map(row => (
                                                 <TableRow key={row.rank}>
                                                     <TbCell>{row.rank}</TbCell>
-                                                    <TbCell><img id='icon' src={require(`../../assets/flags/${row.country}.png`)}/></TbCell>
+                                                    <TbCell><img id="flag" src={require(`../../assets/flags/${row.country}.png`)}/></TbCell>
                                                     <TbCell align="right">{sliceName(row.firstName)}.{row.driver}</TbCell>
                                                     <TbCell align="right">{row.points}</TbCell>
                                                 </TableRow>
@@ -164,7 +161,6 @@ export class standingsCard extends Component {
                                         </TableBody>
                                     </Table>
                                 </TableContainer>
-               
                         </CardContent>
                     </div>
                 </MyCard>

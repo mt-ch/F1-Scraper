@@ -7,10 +7,6 @@ function Box(props) {
     // This reference will give us direct access to the mesh
     const mesh = useRef()
   
-    // Set up state for the hovered and active state
-    const [hovered, setHover] = useState(false)
-    const [active, setActive] = useState(false)
-  
     // Rotate mesh every frame, this is outside of React without overhead
     useFrame(() => (mesh.current.rotation.z += 0.01))
     const texture = useMemo(() => new THREE.TextureLoader().load(rb))
