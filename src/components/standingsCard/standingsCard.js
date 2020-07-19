@@ -38,8 +38,8 @@ function createDriverData(rank, country, firstName, driver, points, wins){
     return {rank, country, firstName, driver, points, wins};
 }
 
-function createDataConstructors(rank, constructor, points, wins){
-    return {rank, constructor, points, wins};
+function createDataConstructors(id, rank, constructor, points, wins){
+    return {id, rank, constructor, points, wins};
 }
 
 let driverStand = [];
@@ -67,9 +67,9 @@ async function getConstructorStandings(){
     const { MRData: { StandingsTable: { StandingsLists: [list]} } } = data;
     const { season, round, ConstructorStandings } = list;
 
-    for (const {position: pos, positionText: posTxt, points: pts, wins: win, Constructor: {name: teamName,} } of ConstructorStandings){
+    for (const {position: pos, positionText: posTxt, points: pts, wins: win, Constructor: {constructorId: cId, name: teamName,} } of ConstructorStandings){
         constructorStand.push(
-            createDataConstructors(pos, teamName, pts, win)
+            createDataConstructors(cId, pos, teamName, pts, win)
         )
     }
     return constructorStand;
@@ -144,7 +144,7 @@ export class standingsCard extends Component {
                                         <TbHeader>
                                             <TableRow>
                                                 <TbCell align="right">Pos</TbCell>
-                                                <TbCell align="right">Nat</TbCell>
+                                                <TbCell align="right"></TbCell>
                                                 <TbCell align="right">Driver</TbCell>
                                                 <TbCell align="right">Points</TbCell>
                                             </TableRow>
@@ -180,11 +180,12 @@ export class standingsCard extends Component {
                                     </ButtonGroup>
                                     <div>
                                         <TableContainer>
-                                            <Table>
+                                            <Table size="small">
                                                 <TableHead>
                                                     <TableRow>
                                                         <TbCell align="right">Rank</TbCell>
-                                                        <TbCell align="right">Constructor</TbCell>
+                                                        
+                                                        <TbCell align="left">Constructor</TbCell>
                                                         <TbCell align="right">Points</TbCell>
                                                     </TableRow>
                                                 </TableHead>
@@ -192,7 +193,12 @@ export class standingsCard extends Component {
                                                     {cStandings.map((row) => (
                                                         <TableRow key={row.rank}>
                                                             <TbCell>{row.rank}</TbCell>
-                                                            <TbCell align="right">{row.constructor}</TbCell>
+                                                            <TbCell align="left">
+                                                                <div id="team">
+                                                                    <img id="teamLogo" src={require(`../../assets/teams/${row.id}.png`)}/>
+                                                                    <span id="teamName"><p>{row.constructor}</p></span>
+                                                                </div>
+                                                                </TbCell>
                                                             <TbCell align="right">{row.points}</TbCell>
                                                         </TableRow>
                                                     ))}

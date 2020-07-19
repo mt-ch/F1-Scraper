@@ -22,9 +22,7 @@ body #bg::before {
 body #card {
   display: -ms-grid;
   display: grid;
-  margin-top: 1em;
-  margin-left: 1em;
-  margin-right: 1em;
+  margin: 1em;
 }
 
 body h2 {
@@ -41,5 +39,22 @@ body #flag {
   width: 100%;
   max-width: 50px;
   height: auto;
+}
+
+body #teamLogo {
+  width: 100%;
+  max-width: 50px;
+  height: auto;
+  grid-area: logo;
+}
+
+body #teamName {
+  grid-area: name;
+  margin-left: 1em;
+}
+
+body #teamName p {
+  font-size: 1em;
+  margin: 0;
 }
 /*# sourceMappingURL=standings.css.map */

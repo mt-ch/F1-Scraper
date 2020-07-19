@@ -19,9 +19,7 @@ body{
 
   #card{
     display: grid;
-    margin-top: 1em;
-    margin-left: 1em;
-    margin-right: 1em;
+    margin: 1em;
   }
 
   h2{
@@ -40,4 +38,26 @@ body{
     max-width: 50px;
     height: auto;
   }
+
+  
+
+
+    #teamLogo{
+      width: 100%;
+      max-width: 50px;
+     // max-height: 20px;
+      height: auto;
+      grid-area: logo;
+
+    }
+    #teamName{
+      grid-area: name;
+      margin-left: 1em;
+      p{
+        font-size: 1em;
+        margin: 0;
+      }
+    }
+  
+
 }
