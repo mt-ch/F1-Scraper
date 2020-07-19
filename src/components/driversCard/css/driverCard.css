@@ -38,7 +38,7 @@ body #icon {
   height: auto;
 }
 
-body #info {
+#driverInfo {
   margin: 1em;
   background: #00000032;
 }
