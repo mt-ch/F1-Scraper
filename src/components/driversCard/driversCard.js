@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Card, CardContent, styled } from '@material-ui/core'
 import './css/driverCard.scss'
 
-
 const MyCard = styled(Card)({
     background: '#00000032',
     borderStyle: 'solid',
@@ -10,8 +9,8 @@ const MyCard = styled(Card)({
     borderColor: '#0000004B'
 });
 
-function createDriverInfo(id, first_Name, last_Name, nationality_, date, url_){
-    return{id, first_Name, last_Name, nationality_, date, url_};
+function createDriverInfo(id, first_Name, last_Name, nationality_, date, url_, number){
+    return{id, first_Name, last_Name, nationality_, date, url_, number};
 }
 
 let driverInfo = [];
@@ -23,20 +22,12 @@ async function getDriverInfo(){
     const { MRData: { DriverTable:  { season, Drivers}  } } = data;
 
     console.table(Drivers);
-    for (const {driverId: id, permanentNumber: number, code: code, url: link, givenName: firstName, familyName: lastName, dateOfBirth: dob, nationality: nation} of Drivers){
-        let path = '../../assets/drivers/'+id+'.png';
-       // console.log(path)
+    for (const {driverId: id, permanentNumber: number, url: link, givenName: firstName, familyName: lastName, dateOfBirth: dob, nationality: nation} of Drivers){
         driverInfo.push(
-            createDriverInfo(id, firstName, lastName, nation, dob, link)
+            createDriverInfo(id, firstName, lastName, nation, dob, link, number)
         )
     }
-    console.table(driverInfo)
     return driverInfo
-}
-
-function getDriverImg(name){
-    var path = name;
-    return {path}
 }
 
 export class driversCard extends Component {
@@ -54,11 +45,6 @@ export class driversCard extends Component {
 
     render() {
         const {dInfo} = this.state;
-
-        // const Info = dInfo.map(info => {
-        //     return <img key={info.index} src={require(`../../assets/drivers/${info.id}.png`)}/>
-        // })
-
         return (
             <div id="card">
                 <MyCard>
@@ -70,17 +56,12 @@ export class driversCard extends Component {
                                 <div id="driverInfo">
                                     <h5>{data.first_Name} {data.last_Name}</h5>
                                     <p>{data.nationality_}</p>
+                                    <p>{data.number}</p>
                                     <img id='icon' src={require(`../../assets/flags/${data.nationality_}.png`)}/>
                                     <p>{data.date}</p>
                                     <img id='icon' src={require(`../../assets/drivers/${data.id}.png`)}/>
-                        
                                 </div>
                             ))}
-                            {/* <div>
-                                {Info}
-                            </div> */}
-                          
-                            
                         </CardContent>
                     </div>
                 </MyCard>
