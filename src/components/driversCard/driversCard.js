@@ -70,6 +70,7 @@ export class driversCard extends Component {
                                 <div id="driverInfo">
                                     <h5>{data.first_Name} {data.last_Name}</h5>
                                     <p>{data.nationality_}</p>
+                                    <img id='icon' src={require(`../../assets/flags/${data.nationality_}.png`)}/>
                                     <p>{data.date}</p>
                                     <img id='icon' src={require(`../../assets/drivers/${data.id}.png`)}/>
                         

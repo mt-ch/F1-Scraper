@@ -10,7 +10,6 @@ const MyCard = styled(Card)({
     borderStyle: 'solid',
     borderWidth: 'medium',
     borderColor: '#0000004B',
-    maxHeight: 500,
 });
 
 const MyButton = styled(Button)({
@@ -33,6 +32,7 @@ const TbHeader = styled(TableHead)({
 
 const TbCell = styled(TableCell)({
     color: '#f5f5f5',
+    maxWidth: 50
 })
 
 function createDriverData(rank, country, firstName, driver, points, wins){
@@ -58,7 +58,7 @@ async function getDriverStandings(){
             createDriverData(pos, country, firstName, lastName, pts, win)
         )
     }
-
+    console.table(driverStand)
     return driverStand;
 }
 
@@ -147,6 +147,7 @@ export class standingsCard extends Component {
                                         <TbHeader>
                                             <TableRow>
                                                 <TbCell align="right">Pos</TbCell>
+                                                <TbCell align="right">Nat</TbCell>
                                                 <TbCell align="right">Driver</TbCell>
                                                 <TbCell align="right">Points</TbCell>
                                             </TableRow>
@@ -155,6 +156,7 @@ export class standingsCard extends Component {
                                             {dStandings.map(row => (
                                                 <TableRow key={row.rank}>
                                                     <TbCell>{row.rank}</TbCell>
+                                                    <TbCell><img id='icon' src={require(`../../assets/flags/${row.country}.png`)}/></TbCell>
                                                     <TbCell align="right">{sliceName(row.firstName)}.{row.driver}</TbCell>
                                                     <TbCell align="right">{row.points}</TbCell>
                                                 </TableRow>
