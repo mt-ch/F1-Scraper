@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Card, CardContent, styled, Typography} from '@material-ui/core'
 import ScrollingTab from './scrollingTab';
-import './resultsCard.css';
+import './css/resultsCard.scss';
 
 const MyCard = styled(Card)({
     background: '#00000032',
@@ -13,18 +13,20 @@ const MyCard = styled(Card)({
 export class resultsCard extends Component {
     render() {
         return (
-            <div className="card">
+            <div id="card">
                 <MyCard>
-                    <CardContent>
-                        <div className="grid-container-results">
-                            <section className="title">
-                                <Typography variant="h4">Results</Typography>
-                            </section>
-                            <section className="results">
-                                <ScrollingTab/>
-                            </section>
-                        </div>
-                    </CardContent>
+                    <div id="bg">
+                        <CardContent>
+                            <div id="grid-container-results">
+                                <section id="title">
+                                    <h2><strong>Results</strong></h2>
+                                </section>
+                                <section id="results">
+                                    <ScrollingTab/>
+                                </section>
+                            </div>
+                        </CardContent>
+                    </div>
                 </MyCard>
             </div>
         )

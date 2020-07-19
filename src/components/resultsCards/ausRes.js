@@ -1,38 +1,17 @@
 import React, { Component } from 'react'
 import { Button, ButtonGroup, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, styled, Box } from '@material-ui/core';
-import './resultsCard.css';
+import './css/resultsCard.scss';
 
-function createData(pos, driver, time, points){
-    return {pos, driver, time, points};
+function createRaceData(pos, firstName, lastName, points){
+    return {pos, firstName, lastName, points};
 }
 
 function createQual(pos, driver, q1, q2, q3){
     return {pos, driver, q1, q2, q3};
 }
 
-const rows = [
-    createData(1, 'V.Bottas', '1:30:55.739', 25),
-    createData(2, 'C.Leclerc', '+2.700s', 18),
-    createData(3, 'L.Norris', '+5.491s', 16),
-    createData(4, 'L.Hamilton','+5.689s', 12),
-    createData(5, 'C.Sainz Jr.','+8.903s', 10),
-]
-
-const rowsC = [
-    createQual(1, 'V.Bottas', '1:04.111', '1:03.015', '1:02.939	'),
-    createQual(2, 'L.Hamilton', '1:04.198', '1:03.096', '1:02.951'),
-    createQual(2, 'L.Hamilton', '1:04.198', '1:03.096', '1:02.951'),
-    createQual(2, 'L.Hamilton', '1:04.198', '1:03.096', '1:02.951'),
-    createQual(2, 'L.Hamilton', '1:04.198', '1:03.096', '1:02.951'),
-]
-
 const MyTableContainer = styled(TableContainer)({
     backgroundColor: '#FFFFFF00'
-})
-
-const MyBox = styled(Box)({
-    backgroundColor: '#FFFFFF00'
-    
 })
 
 const MyButton = styled(Button)({
@@ -49,73 +28,75 @@ const MyButton = styled(Button)({
     },
 })
 
+let resultRace = [];
+
+async function getRaceData(){
+    const url = "http://ergast.com/api/f1/2020/1/results.json";
+    const response = await fetch(url);
+    const data = await response.json();
+    const { MRData: { RaceTable: { Races: [list]} } } = data;
+    const { Results } = list;
+    console.log(Results);
+
+    for(const {position: pos, points: pts, Driver: {familyName: lastName, givenName: firstName}} of Results){
+        resultRace.push(
+            createRaceData(pos, firstName, lastName, pts)
+        )
+    }
+    return resultRace;
+}
+
 export class ausRes extends Component {
-
-    isContained = "contained";
-    isOutline = "outline";
-
-    state = {
-        isActive:true,
-        isNotActive:false,
-     }
+     constructor(props) {
+        super(props);
+        this.state = {
+          rStandings: [],
+        };
+      }
    
-     handleShow = ()=>{
-        this.isContained = "contained";
-        this.isOutline = "outlined";
-         this.setState({
-             isActive: true,
-             isNotActive: false,
-         })
-     }
-   
-     handleHide = () =>{
-        this.isContained = "outlined";
-        this.isOutline = "contained";
-         this.setState({
-             isActive: false,
-             isNotActive: true,
-         })
-     }
+
+
+    componentWillMount(){
+        getRaceData()
+        .then(data => this.setState({ rStandings: data }));
+    }
 
     render() {
+        const { rStandings } = this.state;
         return (
-            <MyBox>
-                <div className="grid-container-table">
-                    <section className="buttonSelection">
+                <div>
+               
                         <ButtonGroup>
                             <MyButton onClick={this.handleShow} variant={this.isContained}>Qualifying</MyButton>
                             <MyButton onClick={this.handleHide} variant={this.isOutline}>Race</MyButton>
                         </ButtonGroup>
-                    </section>
-                    <section className="table">
-                        {this.state.isNotActive ? <div>
+                   
+                    
                             <MyTableContainer>
-                                <Table>
+                                <Table size="small">
                                     <TableHead>
                                         <TableRow>
                                             <TableCell align="right">Pos</TableCell>
                                             <TableCell align="right">Driver</TableCell>
-                                            <TableCell align="right">Time</TableCell>
                                             <TableCell align="right">Pts</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {rows.map((row) => (
+                                        {rStandings.map((row) => (
                                             <TableRow key={row.pos}>
                                                 <TableCell>{row.pos}</TableCell>
-                                                <TableCell align="right">{row.driver}</TableCell>
-                                                <TableCell align="right">{row.time}</TableCell>
+                                                <TableCell align="right">{row.firstName}</TableCell>
                                                 <TableCell align="right">{row.points}</TableCell>
                                             </TableRow>
                                         ))}
                                     </TableBody>
                                 </Table>
                             </MyTableContainer>
-                        </div>: null }
+                      
                         
-                        {this.state.isActive ? <div>
-                            <MyTableContainer>
-                                <Table>
+                        
+                            {/* <MyTableContainer>
+                                <Table size="small">
                                     <TableHead>
                                         <TableRow>
                                             <TableCell align="right">Pos</TableCell>
@@ -137,11 +118,10 @@ export class ausRes extends Component {
                                         ))}
                                     </TableBody>
                                 </Table>
-                            </MyTableContainer>
-                        </div>: null }
-                    </section>
-                </div>
-            </MyBox>
+                            </MyTableContainer> */}
+                   
+        
+        </div>  
         )
     }
 }

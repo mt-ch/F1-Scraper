@@ -9,7 +9,8 @@ const MyCard = styled(Card)({
     background: '#00000032',
     borderStyle: 'solid',
     borderWidth: 'medium',
-    borderColor: '#0000004B'
+    borderColor: '#0000004B',
+    maxHeight: 500,
 });
 
 const MyButton = styled(Button)({
@@ -57,7 +58,7 @@ async function getDriverStandings(){
             createDriverData(pos, country, firstName, lastName, pts, win)
         )
     }
-    console.table(driverStand)
+
     return driverStand;
 }
 
@@ -136,7 +137,7 @@ export class standingsCard extends Component {
                 <MyCard>
                     <div id="bg">
                         <CardContent>
-                                <h2 id="title">2020 Standings</h2>
+                                <h2 id="title"><strong>Standings</strong></h2>
                                 <ButtonGroup id="button">
                                     <MyButton onClick={this.handleDriver}>Driver</MyButton>
                                     <MyButton onClick={this.handleConstructor}>Constructor</MyButton>
@@ -174,7 +175,7 @@ export class standingsCard extends Component {
                     <MyCard>
                         <div id="bg">
                             <CardContent>
-                                    <h2 id="title">2020 Standings</h2>
+                                    <h2 id="title"><strong>Standings</strong></h2>
                                     <ButtonGroup id="button">
                                         <MyButton onClick={this.handleDriver}>Driver</MyButton>
                                         <MyButton onClick={this.handleConstructor}>Constructor</MyButton>

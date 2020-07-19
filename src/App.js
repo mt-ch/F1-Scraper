@@ -21,7 +21,7 @@ function App() {
         {/* <ResultsCard/>  */}
       </section>
       <section className="drivers">
-        {/* <DriversCard/> */}
+        <DriversCard/>
       </section>
       <section className="standings">
         <StandingsCard/>

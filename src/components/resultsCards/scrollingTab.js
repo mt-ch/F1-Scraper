@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { styled, Tabs, Tab, Box } from '@material-ui/core';
 import AusRes from './ausRes';
-import './resultsCard.css';
+import './css/resultsCard.scss';
 
 const MyTab = styled(Tabs)({
   backgroundColor:'#FFFFFF00'
