@@ -41,7 +41,6 @@ async function getDriverInfo(){
             createDriverInfo(dId, firstName, lastName, country, dob, number, pos, pts, win, cId, cName)
         )
     }
-    console.table(driverInfo)
     return driverInfo
 }
 

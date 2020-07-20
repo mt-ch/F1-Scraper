@@ -17,15 +17,16 @@ function App() {
       <section className="schedule">
         <ScheduleCard/>
       </section>
+      <section className="standings">
+        <StandingsCard/>
+      </section>
       <section className="results">
-        {/* <ResultsCard/>  */}
+        <ResultsCard/> 
       </section>
       <section className="drivers">
         <DriversCard/>
       </section>
-      <section className="standings">
-        <StandingsCard/>
-      </section>
+      
     </div>
   );
 }

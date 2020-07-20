@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card, CardContent, styled, Typography} from '@material-ui/core'
-import ScrollingTab from './scrollingTab';
+import AusRes from './ausRes';
 import './css/resultsCard.scss';
 
 const MyCard = styled(Card)({
@@ -22,7 +22,7 @@ export class resultsCard extends Component {
                                     <h2><strong>Results</strong></h2>
                                 </section>
                                 <section id="results">
-                                    <ScrollingTab/>
+                                    <AusRes/>
                                 </section>
                             </div>
                         </CardContent>

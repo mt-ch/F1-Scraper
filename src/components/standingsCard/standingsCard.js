@@ -180,12 +180,12 @@ export class standingsCard extends Component {
                                     </ButtonGroup>
                                     <div>
                                         <TableContainer>
-                                            <Table size="small">
+                                            <Table>
                                                 <TableHead>
                                                     <TableRow>
                                                         <TbCell align="right">Rank</TbCell>
-                                                        
                                                         <TbCell align="left">Constructor</TbCell>
+                                                        <TbCell align="left"></TbCell>
                                                         <TbCell align="right">Points</TbCell>
                                                     </TableRow>
                                                 </TableHead>
@@ -193,12 +193,8 @@ export class standingsCard extends Component {
                                                     {cStandings.map((row) => (
                                                         <TableRow key={row.rank}>
                                                             <TbCell>{row.rank}</TbCell>
-                                                            <TbCell align="left">
-                                                                <div id="team">
-                                                                    <img id="teamLogo" src={require(`../../assets/teams/${row.id}.png`)}/>
-                                                                    <span id="teamName"><p>{row.constructor}</p></span>
-                                                                </div>
-                                                                </TbCell>
+                                                            <TbCell align="left"><span id="teamName"><p>{row.constructor}</p></span></TbCell>
+                                                            <TbCell><img id="teamLogo" src={require(`../../assets/teams/${row.id}.png`)}/></TbCell>
                                                             <TbCell align="right">{row.points}</TbCell>
                                                         </TableRow>
                                                     ))}

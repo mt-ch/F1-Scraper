@@ -2,18 +2,21 @@ main section#info h1 {
   font-size: 2em;
   font-weight: bold;
   color: #f5f5f5;
+  margin: 0;
 }
 
 main section#info h2 {
   font-size: 1.5em;
   font-weight: normal;
   color: #f5f5f5;
+  margin: 0;
 }
 
 main section#info h3 {
   font-size: 1.25em;
   font-weight: lighter;
   color: #f5f5f5;
+  margin: 0;
 }
 
 main section#info #img {

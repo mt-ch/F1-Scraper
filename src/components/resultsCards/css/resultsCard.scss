@@ -35,31 +35,7 @@
 
 .table{
     grid-area: table;
-}
-
-.grid-container-resTab{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.5fr 4fr;
-    grid-template-areas: 
-        "tab tab"
-        "panel panel";
-    height: 60vh;
-    margin: 0em;
-}
-
-.tab{
-    grid-area: tab;
-}
-
-.panel{
-    grid-area: panel;
-}
-
-.card{
-    display: grid;
-    margin: 1em;
-  } */
+}   */
 
 // SASS theme
 
@@ -109,5 +85,26 @@ body{
         font-size: 1.5em;
         font-weight: normal;
         color: color(text);
+        margin: 0;
       }
+}
+
+#grid-container-resTab{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0fr 4fr;
+    grid-template-areas: 
+        "tab"
+        "panel";
+    margin: 0em;
+
+    #tab{
+        grid-area: tab;
+    }
+    
+    #panel{
+        grid-area: panel;
+
+    }
+
 }

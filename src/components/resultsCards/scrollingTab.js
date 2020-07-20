@@ -54,8 +54,8 @@ export default function ScrollableTabsButtonAuto() {
     };
     
     return (
-        <div className="grid-container-resTab">
-          <section className="tab">
+        <div id="grid-container-resTab">
+          <section id="tab">
             <MyTab
               value={value}
               onChange={handleChange}
@@ -72,7 +72,7 @@ export default function ScrollableTabsButtonAuto() {
               <Tab label="Belgian GP" {...a11yProps(6)} />
             </MyTab>
           </section>
-          <section className="panel">
+          <section id="panel">
             <TabPanel value={value} index={0}>
                 <AusRes/>
             </TabPanel>
