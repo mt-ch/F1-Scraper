@@ -42,20 +42,131 @@ body #flag {
   height: auto;
 }
 
-body #teamLogo {
-  width: 100%;
-  max-width: 50px;
-  height: auto;
-  grid-area: logo;
+body #driverInfo {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 0.1fr 2.5fr 0.5fr 0.5fr;
+      grid-template-columns: 0.1fr 2.5fr 0.5fr 0.5fr;
+  -ms-grid-rows: 0.1fr 1fr 1fr;
+      grid-template-rows: 0.1fr 1fr 1fr;
+      grid-template-areas: "pos   name  .   points" "teamLogo    teamName driver  driver" "number  . driver driver";
+  border-left-width: 0.4em;
+  border-right-width: 0.4em;
+  border-right-style: solid;
+  border-left-style: solid;
+  border-color: #00000032;
 }
 
-body #teamName {
-  grid-area: name;
-  margin-left: 1em;
+body #driverInfo h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #f5f5f5;
 }
 
-body #teamName p {
-  font-size: 1em;
+body #driverInfo h3 {
+  font-size: 1.25em;
   margin: 0;
+  font-weight: normal;
+  color: #f5f5f5;
+}
+
+body #driverInfo h4 {
+  font-size: 1.25em;
+  font-weight: bold;
+  color: #f5f5f5;
+  margin: 0;
+}
+
+body #driverInfo p {
+  font-size: 1em;
+  font-weight: normal;
+  color: #f5f5f5;
+  margin: 0;
+}
+
+body #driverInfo #icon {
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+  grid-area: dImg;
+}
+
+body #driverInfo #flag {
+  width: 100%;
+  max-width: 2em;
+  height: auto;
+  grid-area: flag;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+body #driverInfo #name {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: name;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+body #driverInfo #pos {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: pos;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+body #driverInfo #number {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: number;
+}
+
+body #driverInfo #points {
+  -ms-grid-row: 1;
+  -ms-grid-column: 4;
+  grid-area: points;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 0.2em;
+}
+
+body #driverInfo #teamName {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: teamName;
+}
+
+body #driverInfo #teamLogo {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: teamLogo;
+}
+
+body #driverInfo #teamLogo #teamColor {
+  background-color: #7e0000;
+  height: 10px;
+  width: 10px;
+  margin: 0;
+}
+
+body #driverInfo #driver {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 2;
+  grid-area: driver;
 }
 /*# sourceMappingURL=standings.css.map */

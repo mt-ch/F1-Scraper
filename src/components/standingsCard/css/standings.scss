@@ -1,3 +1,22 @@
+// SASS theme
+
+// variables
+$colors: (
+    primary: #574f7d,
+    primary-light: lighten(#574f7d, 40%),
+    primary-dark: darken(#574f7d, 40%),
+    accent: #7e0000,
+    text: #f5f5f5
+);
+
+$padding: 15px; 
+$borders: 15px;
+
+// fucntions
+@function color($color-name) {
+    @return map-get($colors, $color-name)
+}
+
 body{
   #bg{
     position: relative; 
@@ -40,25 +59,107 @@ body{
     height: auto;
   }
 
-  
+  #driverInfo{
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    // background:  #00000032;
+    display: grid;
+    grid-template-columns: 0.1fr 2.5fr 0.5fr 0.5fr;
+    grid-template-rows: 0.1fr 1fr 1fr;
+    grid-template-areas: 
+    "pos   name  .   points"
+    "teamLogo    teamName driver  driver"
+    "number  . driver driver"
+    ;
+    border-left-width: 0.4em;
+    border-right-width: 0.4em;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-color: #00000032;
 
+    h2 {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: color(text);
+      }
+
+    h3 {
+        font-size: 1.25em;
+        margin: 0;
+        font-weight: normal;
+        color: color(text);
+    }
+
+    h4{
+        font-size: 1.25em;
+        font-weight: bold;
+        color: color(text);
+        margin: 0;
+    }
+    
+    p {
+        font-size: 1em;
+        font-weight: normal;
+        color: color(text);
+        margin: 0;
+    }
+    
+    #icon{
+        width: 100%;
+        max-width: 100px;
+        height: auto;
+        grid-area: dImg;
+    }
+    #flag{
+        width: 100%;
+        max-width: 2em;
+        height: auto;
+        grid-area: flag;
+        align-self: center;
+        justify-self: center;
+    }
+
+    #name{
+      grid-area: name;
+      justify-self: end;
+      align-self: center;
+     
+    }
+
+    #pos{
+      grid-area: pos;
+      align-self: center;
+    }
+
+    #number{
+      grid-area: number;
+    }
+
+    #points{
+      grid-area: points;
+      align-self: center;
+      margin: 0.2em;
+    }
+
+    #teamName{
+      grid-area: teamName;
+    }
 
     #teamLogo{
-      width: 100%;
-      max-width: 50px;
-     // max-height: 20px;
-      height: auto;
-      grid-area: logo;
-
-    }
-    #teamName{
-      grid-area: name;
-      margin-left: 1em;
-      p{
-        font-size: 1em;
+      grid-area: teamLogo;
+      
+      #teamColor{
+        background-color: #7e0000;
+        height: 10px;
+        width: 10px;
         margin: 0;
       }
     }
-  
 
+    #driver{
+      grid-area: driver;
+    }
+  }
 }

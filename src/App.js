@@ -21,10 +21,10 @@ function App() {
         <StandingsCard/>
       </section>
       <section className="results">
-        <ResultsCard/> 
+        {/* <ResultsCard/>  */}
       </section>
       <section className="drivers">
-        <DriversCard/>
+        {/* <DriversCard/> */}
       </section>
       
     </div>

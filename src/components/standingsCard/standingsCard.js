@@ -34,8 +34,8 @@ const TbCell = styled(TableCell)({
     maxWidth: 50
 })
 
-function createDriverData(rank, country, firstName, driver, points, wins){
-    return {rank, country, firstName, driver, points, wins};
+function createDriverData(dId, firstName, lastName, nationality, number, pos, pts, wins, cId, cName){
+    return {dId, firstName, lastName, nationality, number, pos, pts, wins, cId, cName};
 }
 
 function createDataConstructors(id, rank, constructor, points, wins){
@@ -52,9 +52,9 @@ async function getDriverStandings(){
     const { MRData: { StandingsTable: { StandingsLists: [list]} } } = data;
     const { season, round, DriverStandings } = list;
 
-    for (const {position: pos, points: pts, wins: win, Driver: {familyName: lastName, givenName: firstName, nationality: country} } of DriverStandings){
+    for (const {position: pos, points: pts, wins: win, Driver: {driverId: dId, permanentNumber: number, familyName: lastName, givenName: firstName, nationality: country}, Constructors: [{constructorId: cId, name: cName }] } of DriverStandings){
         driverStand.push(
-            createDriverData(pos, country, firstName, lastName, pts, win)
+            createDriverData(dId, firstName, lastName, country, number, pos, pts, win, cId, cName)
         )
     }
     return driverStand;
@@ -135,32 +135,40 @@ export class standingsCard extends Component {
                     <div id="bg">
                         <CardContent>
                                 <h2 id="title"><strong>Standings</strong></h2>
-                                <ButtonGroup id="button">
+                                {/* <ButtonGroup id="button">
                                     <MyButton onClick={this.handleDriver}>Driver</MyButton>
                                     <MyButton onClick={this.handleConstructor}>Constructor</MyButton>
-                                </ButtonGroup>
-                                <TableContainer>
-                                    <Table size="small">
-                                        <TbHeader>
-                                            <TableRow>
-                                                <TbCell align="right">Pos</TbCell>
-                                                <TbCell align="right"></TbCell>
-                                                <TbCell align="right">Driver</TbCell>
-                                                <TbCell align="right">Points</TbCell>
-                                            </TableRow>
-                                        </TbHeader>
-                                        <TableBody>
-                                            {dStandings.map(row => (
-                                                <TableRow key={row.rank}>
-                                                    <TbCell>{row.rank}</TbCell>
-                                                    <TbCell><img id="flag" src={require(`../../assets/flags/${row.country}.png`)}/></TbCell>
-                                                    <TbCell align="right">{sliceName(row.firstName)}.{row.driver}</TbCell>
-                                                    <TbCell align="right">{row.points}</TbCell>
-                                                </TableRow>
-                                            ))}
-                                        </TableBody>
-                                    </Table>
-                                </TableContainer>
+                                </ButtonGroup> */}
+                                {dStandings.map(data => 
+                                (   
+                                <div id="driverInfo" >
+                                    <section id="pos">
+                                        <h2>{data.pos}</h2>
+                                    </section>
+                                    <section id="name">
+                                        <h3>{data.firstName} {data.lastName}</h3>
+                                    </section>
+                                    <div id="flag">
+                                        {/* <img id="flag"src={require(`../../assets/flags/${data.nationality}.png`)}/> */}
+                                    </div>
+                                    <section id="number">
+                                        <h4>{data.number}</h4>
+                                    </section>
+                                    <section id="points">
+                                        <p><strong>{data.pts} Pts</strong></p>
+                                    </section>
+                                    <section id="teamName">
+                                        <p>{data.cName}</p>
+                                    </section>
+                                    <section id="driver">
+                                        <img id='icon' src={require(`../../assets/drivers/${data.dId}.png`)}/>  
+                                    </section>
+                                    <section id="teamLogo">
+                                        {/* <img id='icon' src={require(`../../assets/teams/${data.cId}.png`)}/> */}
+                                        <div id="teamColor"></div>
+                                    </section>
+                                </div>
+                                ))}
                         </CardContent>
                     </div>
                 </MyCard>

@@ -15,20 +15,6 @@ function createDriverInfo(id, first_Name, last_Name, nationality_, date, number,
 
 let driverInfo = [];
 
-// async function getDriverInfo(){
-//     const url = "http://ergast.com/api/f1/2020/drivers.json";
-//     const response = await fetch(url);
-//     const data = await response.json();
-//     const { MRData: { DriverTable:  { season, Drivers}  } } = data;
-
-//     for (const {driverId: id, permanentNumber: number, url: link, givenName: firstName, familyName: lastName, dateOfBirth: dob, nationality: nation} of Drivers){
-//         driverInfo.push(
-//             createDriverInfo(id, firstName, lastName, nation, dob, link, number)
-//         )
-//     }
-//     return driverInfo
-// }
-
 async function getDriverInfo(){
     const url = "http://ergast.com/api/f1/current/driverStandings.json";
     const response = await fetch(url);
@@ -36,9 +22,9 @@ async function getDriverInfo(){
     const { MRData: { StandingsTable: { StandingsLists: [list]} } } = data;
     const { season, round, DriverStandings } = list;
 
-    for (const {position: pos, points: pts, wins: win, Driver: {driverId: dId, permanentNumber: number, familyName: lastName, givenName: firstName, nationality: country, dateOfBirth: dob}, Constructors: [{constructorId: cId, name: cName }]} of DriverStandings){
+    for (const {position: pos, points: pts, wins: win, Driver: {driverId: dId, permanentNumber: number, familyName: lastName, givenName: firstName, nationality: country}, Constructors: [{constructorId: cId, name: cName }]} of DriverStandings){
         driverInfo.push(
-            createDriverInfo(dId, firstName, lastName, country, dob, number, pos, pts, win, cId, cName)
+            createDriverInfo(dId, firstName, lastName, country, number, pos, pts, win, cId, cName)
         )
     }
     return driverInfo
@@ -72,7 +58,6 @@ export class driversCard extends Component {
                                     <h4>{data.number}</h4>
                                     <section id="info">
                                         <p>{data.cName}</p>
-                                        <p>{data.nationality_}</p>
                                     </section>
                                     <img id='icon' src={require(`../../assets/teams/${data.cId}.png`)}/>
                                     <img id='flag' src={require(`../../assets/flags/${data.nationality_}.png`)}/>
