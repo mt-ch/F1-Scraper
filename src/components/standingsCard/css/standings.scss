@@ -18,23 +18,23 @@ $borders: 15px;
 }
 
 body{
-  #bg{
-    position: relative; 
-    display: flex;
-  }
+  // #bg{
+  //   position: relative; 
+  //   display: flex;
+  // }
 
-  #bg::before{
-    content: "";
-    background-image: url('../../../assets/textureCard.jpg');
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.25;  
-    filter: grayscale(100%);
-  }
+  // #bg::before{
+  //   content: "";
+  //   background-image: url('../../../assets/textureCard.jpg');
+  //   background-size: cover;
+  //   position: absolute;
+  //   top: 0px;
+  //   right: 0px;
+  //   bottom: 0px;
+  //   left: 0px;
+  //   opacity: 0.25;  
+  //   filter: grayscale(100%);
+  // }
 
   #card{
     display: grid;
@@ -59,37 +59,40 @@ body{
     height: auto;
   }
 
+  h2 {
+    font-size: 1.5em;
+    color: color(text);
+    margin: 0;
+  }
+
   #driverInfo{
-    margin-top: 1em;
-    margin-bottom: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
+    // margin-top: 1em;
+    // margin-bottom: 1em;
+    // padding-left: 1em;
+    // padding-right: 1em;
     // background:  #00000032;
     display: grid;
-    grid-template-columns: 0.1fr 2.5fr 0.5fr 0.5fr;
-    grid-template-rows: 0.1fr 1fr 1fr;
+    grid-template-columns: 0.5fr 4fr 2fr 1fr ;
+    grid-template-rows: 0.5fr 1fr;
     grid-template-areas: 
-    "pos   name  .   points"
-    "teamLogo    teamName driver  driver"
-    "number  . driver driver"
+    "pos   name   driver points"
+    ".  teamName  driver flag"
     ;
-    border-left-width: 0.4em;
-    border-right-width: 0.4em;
+    border: 0.3em;
     border-right-style: solid;
-    border-left-style: solid;
-    border-color: #00000032;
-
-    h2 {
-        font-size: 1.5em;
-        font-weight: bold;
-        color: color(text);
-      }
+    border-top-style: solid;
+    border-radius: 0em 1em 0em 1em;
+    border-color: #000000;
+    margin: 0.5em -0.5em 0em -0.5em;
+    background-image: url('../../../assets/dotTexture.jpg');
+    background-size: cover;
+    padding: 0 0.5em 0 0.5em;
 
     h3 {
-        font-size: 1.25em;
-        margin: 0;
+        font-size: 0.9em;
         font-weight: normal;
         color: color(text);
+        margin: 0;
     }
 
     h4{
@@ -98,34 +101,39 @@ body{
         color: color(text);
         margin: 0;
     }
-    
-    p {
-        font-size: 1em;
+
+    h5{
+        font-size: 0.9em;
         font-weight: normal;
         color: color(text);
         margin: 0;
     }
     
-    #icon{
-        width: 100%;
-        max-width: 100px;
-        height: auto;
-        grid-area: dImg;
+    p {
+        font-size: 0.9em;
+        font-weight: normal;
+        color: color(text);
+        margin: 0;
     }
+    
     #flag{
-        width: 100%;
-        max-width: 2em;
-        height: auto;
-        grid-area: flag;
-        align-self: center;
-        justify-self: center;
+      width: 100%;
+      max-height: 1.5em;
+      max-width: 1.75em;
+      height: auto;
+      grid-area: flag;
+      align-self: start;
+      justify-self: start;
+     // transform: rotate(90deg);
+      grid-area: flag;
+      padding: 0.5em;
     }
 
     #name{
       grid-area: name;
-      justify-self: end;
+      margin: 0;
       align-self: center;
-     
+      padding-left: 0.5em;
     }
 
     #pos{
@@ -135,16 +143,18 @@ body{
 
     #number{
       grid-area: number;
+      
     }
 
     #points{
       grid-area: points;
-      align-self: center;
-      margin: 0.2em;
+      align-self: start;
+      justify-self: end;
     }
 
     #teamName{
       grid-area: teamName;
+      padding-left: 0.5em;
     }
 
     #teamLogo{
@@ -160,6 +170,15 @@ body{
 
     #driver{
       grid-area: driver;
+      align-self: end;
+      
+      #icon{
+        width: 100%;
+        max-width: 100px;
+        height: auto;
+        grid-area: dImg;
+        margin-right: 0.5em;
+      }
     }
   }
 }

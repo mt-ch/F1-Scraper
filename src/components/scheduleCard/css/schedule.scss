@@ -75,18 +75,18 @@ body{
     display: flex;
   }
 
-  #bg::before{
-    content: "";
-    background-image: url('../../../assets/textureCard.jpg');
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.25;  
-    filter: grayscale(100%);
-  }
+  // #bg::before{
+  //   content: "";
+  //   background-image: url('../../../assets/textureCard.jpg');
+  //   background-size: cover;
+  //   position: absolute;
+  //   top: 0px;
+  //   right: 0px;
+  //   bottom: 0px;
+  //   left: 0px;
+  //   opacity: 0.25;  
+  //   filter: grayscale(100%);
+  // }
 
   #card{
     display: grid;
