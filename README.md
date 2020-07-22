@@ -2,7 +2,7 @@
 
 ## F1 Scraper
 
-F1 Scraper is a web application buit in React, that utilises an F1 stastic API (Ergast) to dsiplay the latest F1 standings, schedule and results.
+F1 Scraper is a web application buit in React, that utilises an F1 statistic API (Ergast) to dsiplay the latest F1 standings, schedule and results.
 
 Technologies used in this project:
 
