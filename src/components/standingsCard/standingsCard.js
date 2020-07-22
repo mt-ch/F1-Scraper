@@ -41,8 +41,8 @@ function createDriverData(dId, firstName, lastName, nationality, number, pos, pt
     return { dId, firstName, lastName, nationality, number, pos, pts, wins, cId, cName };
 }
 
-function createDataConstructors(id, rank, constructor, points, wins) {
-    return { id, rank, constructor, points, wins };
+function createDataConstructors(cId, pos, constructor, pts, wins) {
+    return { cId, pos, constructor, pts, wins };
 }
 
 let driverStand = [];
@@ -174,11 +174,13 @@ export class standingsCard extends Component {
                     <MyCard>
                         <div id="bg">
                             <CardContent>
-                                <h2 id="title">Standings</h2>
-                                {/* <ButtonGroup id="button">
-                                    <MyButton onClick={this.handleDriver}>Driver</MyButton>
-                                    <MyButton onClick={this.handleConstructor}>Constructor</MyButton>
-                                </ButtonGroup> */}
+                                <section id="header">
+                                    <h2 id="title">Standings</h2>
+                                    <ButtonGroup id="button">
+                                        <MyButton size="small" onClick={this.handleDriver}>Driver</MyButton>
+                                        <MyButton size="small" onClick={this.handleConstructor}>Team</MyButton>
+                                    </ButtonGroup>
+                                </section>
                                 {dStandings.map(data =>
                                     (
                                         <div id="driverInfo" >
@@ -187,9 +189,7 @@ export class standingsCard extends Component {
                                             </section>
                                             <section id="name">
                                                 <h3><strong>{data.firstName} {data.lastName}</strong></h3>
-                                                
                                             </section>
-                                            
                                             <img id="flag"src={require(`../../assets/flags/${data.nationality}.png`)}/>
                                             <section id="number">
                                                 {/* <h4>{data.number}</h4> */}
@@ -202,7 +202,6 @@ export class standingsCard extends Component {
                                             </section>
                                             <div id="driver">
                                                 <img id='icon' src={require(`../../assets/drivers/${data.dId}.png`)} />
-                                                
                                             </div>
                                             <section id="teamLogo">
                                                 {/* <img id='icon' src={require(`../../assets/teams/${data.cId}.png`)}/> */}
@@ -222,34 +221,31 @@ export class standingsCard extends Component {
                     <MyCard>
                         <div id="bg">
                             <CardContent>
-                                <h2 id="title"><strong>Standings</strong></h2>
-                                <ButtonGroup id="button">
-                                    <MyButton onClick={this.handleDriver}>Driver</MyButton>
-                                    <MyButton onClick={this.handleConstructor}>Constructor</MyButton>
-                                </ButtonGroup>
+                                <section id="header">
+                                    <h2 id="title">Standings</h2>
+                                    <ButtonGroup id="button">
+                                        <MyButton size="small" onClick={this.handleDriver}>Driver</MyButton>
+                                        <MyButton size="small" onClick={this.handleConstructor}>Team</MyButton>
+                                    </ButtonGroup>
+                                </section>
                                 <div>
-                                    <TableContainer>
-                                        <Table>
-                                            <TableHead>
-                                                <TableRow>
-                                                    <TbCell align="right">Rank</TbCell>
-                                                    <TbCell align="left">Constructor</TbCell>
-                                                    <TbCell align="left"></TbCell>
-                                                    <TbCell align="right">Points</TbCell>
-                                                </TableRow>
-                                            </TableHead>
-                                            <TableBody>
-                                                {cStandings.map((row) => (
-                                                    <TableRow key={row.rank}>
-                                                        <TbCell>{row.rank}</TbCell>
-                                                        <TbCell align="left"><span id="teamName"><p>{row.constructor}</p></span></TbCell>
-                                                        <TbCell><img id="teamLogo" src={require(`../../assets/teams/${row.id}.png`)} /></TbCell>
-                                                        <TbCell align="right">{row.points}</TbCell>
-                                                    </TableRow>
-                                                ))}
-                                            </TableBody>
-                                        </Table>
-                                    </TableContainer>
+                                {cStandings.map(data =>
+                                    (
+                                    <div id="driverInfo">
+                                        <section id="pos">
+                                            <h3><strong>{data.pos}</strong></h3>
+                                        </section>
+                                        <section id="name">
+                                            <h3><strong>{data.constructor}</strong></h3>
+                                        </section>
+                                        <section id="points">
+                                            <h5><strong>{data.pts} Pts</strong></h5>
+                                        </section>
+                                        <div id="driver">
+                                            <img id='icon' src={require(`../../assets/teams/${data.cId}.png`)} />
+                                        </div>
+                                    </div>
+                                ))}
                                 </div>
                             </CardContent>
                         </div>
