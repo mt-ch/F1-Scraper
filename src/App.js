@@ -6,7 +6,6 @@ import NavBar from './components/nav/navBar';
 import ScheduleCard from './components/scheduleCard/scheduleCard';
 import StandingsCard from './components/standingsCard/standingsCard';
 import ResultsCard from './components/resultsCards/resultsCard';
-import DriversCard from './components/driversCard/driversCard';
 
 function App() {
   return (
