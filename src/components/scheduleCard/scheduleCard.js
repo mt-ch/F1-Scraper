@@ -7,10 +7,11 @@ import HungaryRndThree from './rounds/hungaryRndThree';
 import './css/schedule.scss'; 
 
 const MyCard = styled(Card)({
-    background: '#00000032',
+    background: '#574f7d85',
     borderStyle: 'solid',
     borderWidth: 'medium',
-    borderColor: '#0000004B'
+    borderColor: '#0000004B',
+    borderRadius: '1em'
 });
 
 // function createSchedule(round, name, date, time, curcuit, localName, country){

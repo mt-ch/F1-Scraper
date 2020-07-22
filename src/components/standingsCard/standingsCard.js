@@ -7,7 +7,7 @@ import {
 import './css/standings.scss';
 
 const MyCard = styled(Card)({
-    background: '#1d1a2a00',
+    background: '#574f7d85',
     borderStyle: 'solid',
     borderWidth: 'medium',
     borderColor: '#0000004B',
@@ -175,7 +175,7 @@ export class standingsCard extends Component {
                         <div id="bg">
                             <CardContent>
                                 <section id="header">
-                                    <h2 id="title">Standings</h2>
+                                    <h1 id="title"><strong>Standings</strong></h1>
                                     <ButtonGroup id="button">
                                         <MyButton size="small" onClick={this.handleDriver}>Driver</MyButton>
                                         <MyButton size="small" onClick={this.handleConstructor}>Team</MyButton>
@@ -185,17 +185,17 @@ export class standingsCard extends Component {
                                     (
                                         <div id="driverInfo" >
                                             <section id="pos">
-                                                <h3><strong>{data.pos}</strong></h3>
+                                                <h1><strong>{data.pos}</strong></h1>
                                             </section>
                                             <section id="name">
-                                                <h3><strong>{data.firstName} {data.lastName}</strong></h3>
+                                                <p><strong>{data.firstName} {data.lastName}</strong></p>
                                             </section>
                                             <img id="flag"src={require(`../../assets/flags/${data.nationality}.png`)}/>
                                             <section id="number">
                                                 {/* <h4>{data.number}</h4> */}
                                             </section>
                                             <section id="points">
-                                                <h5><strong>{data.pts} Pts</strong></h5>
+                                                <h3><strong>{data.pts} Pts</strong></h3>
                                             </section>
                                             <section id="teamName">
                                                 <p>{data.cName}</p>
@@ -222,7 +222,7 @@ export class standingsCard extends Component {
                         <div id="bg">
                             <CardContent>
                                 <section id="header">
-                                    <h2 id="title">Standings</h2>
+                                    <h1 id="title">Standings</h1>
                                     <ButtonGroup id="button">
                                         <MyButton size="small" onClick={this.handleDriver}>Driver</MyButton>
                                         <MyButton size="small" onClick={this.handleConstructor}>Team</MyButton>
@@ -233,17 +233,17 @@ export class standingsCard extends Component {
                                     (
                                     <div id="driverInfo">
                                         <section id="pos">
-                                            <h3><strong>{data.pos}</strong></h3>
+                                            <h1><strong>{data.pos}</strong></h1>
                                         </section>
                                         <section id="name">
-                                            <h3><strong>{data.constructor}</strong></h3>
+                                            <p><strong>{data.constructor}</strong></p>
                                         </section>
                                         <section id="points">
-                                            <h5><strong>{data.pts} Pts</strong></h5>
+                                            <h3><strong>{data.pts} Pts</strong></h3>
                                         </section>
-                                        <div id="driver">
+                                        <section id="driver">
                                             <img id='icon' src={require(`../../assets/teams/${data.cId}.png`)} />
-                                        </div>
+                                        </section>
                                     </div>
                                 ))}
                                 </div>
