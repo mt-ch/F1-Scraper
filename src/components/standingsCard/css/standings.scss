@@ -45,6 +45,7 @@ body{
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-areas: "title   button";
+      margin: 0em 0 1em 0;
   
       #title{
         grid-area: title
@@ -95,14 +96,15 @@ body{
     "pos   name   driver points"
     ".  teamName  driver flag"
     ;
-    border: 0.3em;
+    border: 0em;
     border-style: solid;
-    border-radius: 0em 1em 0em 1em;
-    border-color: #00000086;
-    margin: 0.5em -0.5em 0em -0.5em;
-    background-image: url('../../../assets/dotTexture.jpg');
-    background-size: cover;
+    border-radius: 1em 1em 1em 1em;
+    border-color: #f3f3f325;
+    margin: 0.5em 0em 0.5em 0em;
     padding: 0 0.5em 0 0.5em;
+
+      background-image: url('../../../assets/dotTexture.png');
+      background-size: cover;
 
     h3 {
         font-size: 0.9em;
@@ -155,6 +157,7 @@ body{
     #pos{
       grid-area: pos;
       align-self: center;
+      justify-self: center;
     }
 
     #number{
