@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import {
     Card, CardContent, styled, Button,
-    ButtonGroup, Table, TableBody, TableCell, TableContainer,
-    TableHead, TableRow, TableFooter, TablePagination, Box
+    ButtonGroup, withStyles
 } from '@material-ui/core';
 import './css/standings.scss';
 
@@ -14,28 +13,23 @@ const MyCard = styled(Card)({
     borderRadius: '1em'
 });
 
-const MyButton = styled(Button)({
-    backgroundColor: '#FFFFFF32',
-    '&:active': {
-        boxShadow: 'none',
-        backgroundColor: 'white',
-        borderColor: '#005cbf',
+const StyledButton = withStyles({
+    root: {
+      background: '#00000085',
+      border: 0,
+      color: '#f5f5f5',
+      padding: '0 1em 0 1em',
+      border: 0,
+      borderRadius: '2em',
+      boxShadow: '0 3px 5px 2px rgba(6, 6, 6, .2)'
     },
-    '&:hover': {
-        backgroundColor: '#FFFFFF5A',
-        borderColor: '#0062cc',
-        boxShadow: 'none',
+    label: {
+      textTransform: 'capitalize',
+      margin: 0,
+      fontFamily: 'Orbitron',
+      fontSize: '0.8em'
     },
-})
-
-const TbHeader = styled(TableHead)({
-    color: '#000000',
-})
-
-const TbCell = styled(TableCell)({
-    color: '#f5f5f5',
-    maxWidth: 50
-})
+})(Button);
 
 function createDriverData(dId, firstName, lastName, nationality, number, pos, pts, wins, cId, cName) {
     return { dId, firstName, lastName, nationality, number, pos, pts, wins, cId, cName };
@@ -78,50 +72,6 @@ async function getConstructorStandings() {
     return constructorStand;
 }
 
-function sliceName(name) {
-    var str = name;
-    var res = str.slice(0, 1);
-    return res;
-}
-
-function getTeamColor(team) {
-    let color
-    switch (team) {
-        case "ferarri":
-            color = "#DC0000"
-            break
-        case "mercedes":
-            color = "#00D2BE"
-            break
-        case "alfa":
-            color = "#9B0000"
-            break
-        case "alphatauri":
-            color = "#469BFF"
-            break
-        case "mclaren":
-            color = "#FF8700"
-            break
-        case "racing_point":
-            color = "#F596C8"
-            break
-        case "red_bull":
-            color = "#1E41FF"
-            break
-        case "renault":
-            color = "#FFF500"
-            break
-        case "williams":
-            color = "#FFFFFF"
-            break
-        case "haas":
-            color = "#F0D787"
-            break
-    }
-    return color
-}
-
-
 export class standingsCard extends Component {
     constructor(props) {
         super(props);
@@ -130,13 +80,11 @@ export class standingsCard extends Component {
             cStandings: [],
             isLoading: false,
             driver: true,
-            constructor: false
+            constructor: false,
         };
     }
 
     handleDriver = () => {
-        this.isContained = "contained";
-        this.isOutline = "outlined";
         this.setState({
             driver: true,
             constructor: false
@@ -144,8 +92,6 @@ export class standingsCard extends Component {
     }
 
     handleConstructor = () => {
-        this.isContained = "contained";
-        this.isOutline = "outlined";
         this.setState({
             driver: false,
             constructor: true
@@ -163,8 +109,6 @@ export class standingsCard extends Component {
 
     render() {
         const { dStandings, cStandings, isLoading, driver, constructor } = this.state;
-
-
         if (isLoading) {
             return <p>Loading ...</p>;
         }
@@ -177,8 +121,8 @@ export class standingsCard extends Component {
                                 <section id="header">
                                     <h1 id="title"><strong>Standings</strong></h1>
                                     <ButtonGroup id="button">
-                                        <MyButton size="small" onClick={this.handleDriver}>Driver</MyButton>
-                                        <MyButton size="small" onClick={this.handleConstructor}>Team</MyButton>
+                                        <StyledButton size="small" onClick={this.handleDriver}>Driver</StyledButton>
+                                        <StyledButton size="small" onClick={this.handleConstructor}>Team</StyledButton>
                                     </ButtonGroup>
                                 </section>
                                 {dStandings.map(data =>
@@ -198,16 +142,9 @@ export class standingsCard extends Component {
                                             <section id="points">
                                                 <h3><strong>{data.pts} Pts</strong></h3>
                                             </section>
-                                            {/* <section id="teamName">
-                                                <p>{data.cName}</p>
-                                            </section> */}
                                             <div id="driver">
                                                 <img id='icon' src={require(`../../assets/drivers/${data.dId}.png`)} />
                                             </div>
-                                            <section id="teamLogo">
-                                                {/* <img id='icon' src={require(`../../assets/teams/${data.cId}.png`)}/> */}
-                                                {/* <div id="teamColor"></div> */}
-                                            </section>
                                         </div>
                                     ))}
                             </CardContent>
@@ -225,8 +162,8 @@ export class standingsCard extends Component {
                                 <section id="header">
                                     <h1 id="title">Standings</h1>
                                     <ButtonGroup id="button">
-                                        <MyButton size="small" onClick={this.handleDriver}>Driver</MyButton>
-                                        <MyButton size="small" onClick={this.handleConstructor}>Team</MyButton>
+                                        <StyledButton size="small" onClick={this.handleDriver}>Driver</StyledButton>
+                                        <StyledButton size="small" onClick={this.handleConstructor}>Team</StyledButton>
                                     </ButtonGroup>
                                 </section>
                                 <div>
