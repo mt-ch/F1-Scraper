@@ -9,7 +9,7 @@ $colors: (
     primary-dark: darken(#574f7d, 40%),
     accent: #7e0000,
     text: #f5f5f5,
-    color: #00000085
+    driverNumber: #574f7d8f
 );
 
 $padding: 15px; 
@@ -50,7 +50,7 @@ body{
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      
+
       #title{
         grid-area: title
       }
@@ -77,6 +77,12 @@ body{
   h3 {
     font-size: 0.8em;
     color: color(text);
+    margin: 0;
+  }
+
+  h5 {
+    font-size: 2em;
+    color: color(driverNumber);
     margin: 0;
   }
 
@@ -162,15 +168,35 @@ body{
 
     #driver{
       grid-area: driver;
-      align-self: end;
-      
+      align-self: center;
+      display: flex; 
+      position: relative; 
+
       #icon{
         width: 100%;
         max-width: 4em;
         height: auto;
-        grid-area: dImg;
         margin-right: 0.5em;
+        z-index: 1;
       }
+
+      #teamLogo{
+        width: 100%;
+        max-width: 4em;
+        height: auto;
+        margin-right: 1em;
+        z-index: 1;
+      }
+
+      #number{
+        position: absolute;
+        top: 0em;
+        right: 0em;
+        bottom: 0em;
+        left: 0em;
+        
+      }
+
     }
   }
 }

@@ -136,14 +136,13 @@ export class standingsCard extends Component {
                                                 <p>{data.cName}</p>
                                             </section>
                                             <img id="flag"src={require(`../../assets/flags/${data.nationality}.png`)}/>
-                                            <section id="number">
-                                                {/* <h4>{data.number}</h4> */}
-                                            </section>
+            
                                             <section id="points">
                                                 <h3><strong>{data.pts} Pts</strong></h3>
                                             </section>
                                             <div id="driver">
                                                 <img id='icon' src={require(`../../assets/drivers/${data.dId}.png`)} />
+                                                <h5 id="number">{data.number}</h5>
                                             </div>
                                         </div>
                                     ))}
@@ -180,7 +179,7 @@ export class standingsCard extends Component {
                                             <h3><strong>{data.pts} Pts</strong></h3>
                                         </section>
                                         <section id="driver">
-                                            <img id='icon' src={require(`../../assets/teams/${data.cId}.png`)} />
+                                            <img id='teamLogo' src={require(`../../assets/teams/${data.cId}.png`)} />
                                         </section>
                                     </div>
                                 ))}
