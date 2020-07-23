@@ -27,8 +27,10 @@ async function getCurrentSchedule(){
         schedule.push(
             createSchedule(rnd, name, date, time, trackName, localName, country )
         )
-        console.table(schedule)
+        
     }
+    console.table(schedule)
+    return schedule
 }
 
 export class scheduleCard extends Component {

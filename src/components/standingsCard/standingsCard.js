@@ -189,6 +189,7 @@ export class standingsCard extends Component {
                                             </section>
                                             <section id="name">
                                                 <p><strong>{data.firstName} {data.lastName}</strong></p>
+                                                <p>{data.cName}</p>
                                             </section>
                                             <img id="flag"src={require(`../../assets/flags/${data.nationality}.png`)}/>
                                             <section id="number">
@@ -197,9 +198,9 @@ export class standingsCard extends Component {
                                             <section id="points">
                                                 <h3><strong>{data.pts} Pts</strong></h3>
                                             </section>
-                                            <section id="teamName">
+                                            {/* <section id="teamName">
                                                 <p>{data.cName}</p>
-                                            </section>
+                                            </section> */}
                                             <div id="driver">
                                                 <img id='icon' src={require(`../../assets/drivers/${data.dId}.png`)} />
                                             </div>
