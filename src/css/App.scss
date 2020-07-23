@@ -1,0 +1,115 @@
+// SASS theme
+
+// variables
+$colors: (
+    primary: #574f7d,
+    primary-light: lighten(#574f7d, 40%),
+    primary-dark: darken(#574f7d, 40%),
+    accent: #7e0000,
+);
+
+// get color
+@function color($color-name) {
+    @return map-get($colors, $color-name)
+}
+
+html,
+body{
+  height: 100%;
+}
+
+body{
+    background: color(primary);
+    font-family: 'Orbitron';
+  
+  #card{
+    display: grid;
+    margin: 1em;
+  } 
+
+  #bg{
+    position: relative; 
+    display: flex;
+  }
+
+  #bg::before{
+    content: "";
+    background-image: url('../assets/textures/textureCard.jpg');
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.25;  
+    z-index: -1;
+    filter: grayscale(100%);
+  }
+}
+
+//Nav
+#toolbar{
+  background: rgb(0,0,0);
+  background: linear-gradient(180deg, rgba(0,0,0,1) 63%, rgba(255,255,255,0) 100%);
+  opacity: 1;
+
+  #logo{
+    width: 100%;
+    max-width: 4em;
+    height: auto;
+  }
+}
+
+//Schedule Card
+#info{
+  h1 {
+    font-size: 2em;
+    color: color(text);
+    margin: 0;
+  }
+  h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: color(text);
+    margin: 0;
+  }
+  h3 {
+    font-size: 1em;
+    font-weight: bold;
+    color: color(text);
+    margin: 0;
+  }
+
+  p{
+    font-size: 1em;
+    font-weight: lighter;
+    color: color(text);
+    margin: 0;
+  }
+
+  #img {
+    width: 2.5em;
+    height: 1.5em;
+    border-radius: 0.5em;
+    align-self: center;
+    margin-left: 0.5em;
+  }
+
+  #country-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  #country {
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+  }
+
+  #track{
+    width: 100%;
+    max-width: 5em;
+    height: auto;
+    margin-left: -0.5em
+  }
+} 

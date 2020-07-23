@@ -1,6 +1,6 @@
 import React, { Component, useRef, useState, useMemo } from 'react'
 import { Canvas, useFrame } from 'react-three-fiber'
-import rb from '../../assets/RBring.png'
+import rb from '../../assets/tracks/RBring.png'
 import * as THREE from "three";
 
 function Box(props) {
@@ -17,11 +17,10 @@ function Box(props) {
         <planeBufferGeometry attach="geometry" args={[4, 4]} />
         <meshPhongMaterial attach="material" map = {texture} />
       </mesh>
-
     )
   }
 
-export class test extends Component {
+export class track extends Component {
     render() {
         return (
             <Canvas camera={{ fov: 60, position: [0, 0, 5] }} colorManagement style={{height:100,width: 150}}>
@@ -31,4 +30,4 @@ export class test extends Component {
     }
 }
 
-export default test
+export default track

@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardContent, styled, Box} from '@material-ui/core';
 import Carousel from 'react-material-ui-carousel'
-import AustriaRndOne from './rounds/austriaRndOne';
 import Round from './round';
-import './css/schedule.scss'; 
-import AusFlag from '../../assets/austriaFlag.png';
-import Test from './test';
 
 const MyCard = styled(Card)({
     background: '#574f7d85',

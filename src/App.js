@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.scss';
+import './css/App.scss';
 
-//import components
+//components
 import NavBar from './components/nav/navBar';
 import ScheduleCard from './components/scheduleCard/scheduleCard';
 import StandingsCard from './components/standingsCard/standingsCard';
@@ -22,10 +22,6 @@ function App() {
       <section className="results">
         {/* <ResultsCard/>  */}
       </section>
-      <section className="drivers">
-        {/* <DriversCard/> */}
-      </section>
-      
     </div>
   );
 }

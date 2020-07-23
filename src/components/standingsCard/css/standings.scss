@@ -15,33 +15,12 @@ $colors: (
 $padding: 15px; 
 $borders: 15px;
 
-// fucntions
+// functions
 @function color($color-name) {
     @return map-get($colors, $color-name)
 }
 
 body{
-  font-family: 'Orbitron';
-  
-  #bg{
-    position: relative; 
-    display: flex;
-  }
-
-  #bg::before{
-    content: "";
-    background-image: url('../../../assets/textureCard.jpg');
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.25;  
-    z-index: -1;
-    filter: grayscale(100%);
-  }
-
   #card{
     display: grid;
     margin: 1em;
@@ -93,11 +72,6 @@ body{
   }
 
   #driverInfo{
-    // margin-top: 1em;
-    // margin-bottom: 1em;
-    // padding-left: 1em;
-    // padding-right: 1em;
-    // background:  #00000032;
     display: grid;
     grid-template-columns: 0.5fr 3.5fr 1.5fr 1.5fr ;
     grid-template-rows: 0.5fr 0.5fr;
@@ -110,7 +84,7 @@ body{
     border-color: #f3f3f325;
     margin: 0.5em 0em 0.5em 0em;
     padding: 0 0.5em 0 0.5em;
-    background-image: url('../../../assets/dotTexture.png');
+    background-image: url('../../../assets/textures/dotTexture.png');
     background-size: cover;
     
     #flag{
@@ -121,7 +95,6 @@ body{
       grid-area: flag;
       align-self: start;
       justify-self: start;
-     // transform: rotate(90deg);
       grid-area: flag;
       padding: 0.5em;
     }

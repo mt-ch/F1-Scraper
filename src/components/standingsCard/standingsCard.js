@@ -136,7 +136,6 @@ export class standingsCard extends Component {
                                                 <p>{data.cName}</p>
                                             </section>
                                             <img id="flag"src={require(`../../assets/flags/${data.nationality}.png`)}/>
-            
                                             <section id="points">
                                                 <h3><strong>{data.pts} Pts</strong></h3>
                                             </section>

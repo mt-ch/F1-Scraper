@@ -1,0 +1,116 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: #574f7d;
+  font-family: 'Orbitron';
+}
+
+body #card {
+  display: -ms-grid;
+  display: grid;
+  margin: 1em;
+}
+
+body #bg {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body #bg::before {
+  content: "";
+  background-image: url("../assets/textures/textureCard.jpg");
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.25;
+  z-index: -1;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+
+#toolbar {
+  background: black;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(63%, black), to(rgba(255, 255, 255, 0)));
+  background: linear-gradient(180deg, black 63%, rgba(255, 255, 255, 0) 100%);
+  opacity: 1;
+}
+
+#toolbar #logo {
+  width: 100%;
+  max-width: 4em;
+  height: auto;
+}
+
+#info h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+#info h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
+}
+
+#info h3 {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0;
+}
+
+#info p {
+  font-size: 1em;
+  font-weight: lighter;
+  margin: 0;
+}
+
+#info #img {
+  width: 2.5em;
+  height: 1.5em;
+  border-radius: 0.5em;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-left: 0.5em;
+}
+
+#info #country-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#info #country {
+  -ms-flex-item-align: center;
+      align-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+#info #track {
+  width: 100%;
+  max-width: 5em;
+  height: auto;
+  margin-left: -0.5em;
+}
+/*# sourceMappingURL=App.css.map */
