@@ -45,32 +45,29 @@ main{
     }
 
     #img {
-      width: 100%;
-      max-width: 50px;
-      height: auto;
-    }
-    #country-grid {
-      display: grid;
-      grid-template-columns: 1fr 0.75fr 2fr;
-      grid-template-rows: auto;
-      grid-template-areas: "country flag track";
-    }
-    #country {
-      grid-area: country;
+      width: 2.5em;
+      height: 1.5em;
+      border-radius: 0.5em;
       align-self: center;
-    }
-    #flag {
-      grid-area: flag;
-      align-self: center;
-      margin-top: 0.5em;
       margin-left: 0.5em;
     }
-    #track{
-      grid-area: track;
+
+    #country-grid {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    #country {
       align-self: center;
+      display: flex;
+      flex-direction: row;
+    }
+
+    #track{
       width: 100%;
-      max-width: 50px;
+      max-width: 5em;
       height: auto;
+      margin-left: -0.5em
     }
   } 
 }

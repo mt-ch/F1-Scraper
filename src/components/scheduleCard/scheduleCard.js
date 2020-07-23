@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { Card, CardContent, styled} from '@material-ui/core';
+import { Card, CardContent, styled, Box} from '@material-ui/core';
 import Carousel from 'react-material-ui-carousel'
 import AustriaRndOne from './rounds/austriaRndOne';
+import Round from './round';
 import './css/schedule.scss'; 
+import AusFlag from '../../assets/austriaFlag.png';
+import Test from './test';
 
 const MyCard = styled(Card)({
     background: '#574f7d85',
@@ -12,8 +15,8 @@ const MyCard = styled(Card)({
     borderRadius: '1em'
 });
 
-function createSchedule(round, name, date, time, curcuit, localName, country){
-    return {round, name, date, time, curcuit, localName, country};
+function createSchedule(round, name, date, time, circuit, localName, country){
+    return {round, name, date, time, circuit, localName, country};
 }
 
 let schedule = [];
@@ -34,10 +37,24 @@ async function getCurrentSchedule(){
 }
 
 export class scheduleCard extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            rSchedule: [],
+            isLoading: false,
+        };
+    }
     componentWillMount(){
-        getCurrentSchedule();
+        this.setState({ isLoading: true });
+        getCurrentSchedule()
+            .then(data => this.setState({ rSchedule: data, isLoading: false,}));
     }
     render() {
+        const {rSchedule, isLoading} = this.state;
+        if (isLoading) {
+            return <p>Loading ...</p>;
+        }
+        else
         return (
             <div id="card">
                 <MyCard>
@@ -49,7 +66,9 @@ export class scheduleCard extends Component {
                                 indicators={false}
                                 autoPlay={false}
                             >
-                                <AustriaRndOne/> 
+                                {rSchedule.map(schedule => (
+                                    <Round schedule={schedule}/>
+                                ))}
                             </Carousel>
                         </CardContent>
                     </div>
