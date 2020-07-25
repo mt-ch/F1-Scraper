@@ -73,7 +73,7 @@ body{
 
   #driverInfo{
     display: grid;
-    grid-template-columns: 0.5fr 3.5fr 1.5fr 1.5fr ;
+    grid-template-columns: 0.5fr 2fr 1.5fr 1fr ;
     grid-template-rows: 0.5fr 0.5fr;
     grid-template-areas: 
     "pos   name   driver points"
@@ -86,6 +86,7 @@ body{
     padding: 0 0.5em 0 0.5em;
     background-image: url('../../../assets/textures/dotTexture.png');
     background-size: cover;
+    align-content: space-between;
     
     #flag{
       width: 100%;

@@ -187,7 +187,7 @@ export class standingsCard extends Component {
                                             <h3><strong>{data.pts} Pts</strong></h3>
                                         </section>
                                         <section id="driver">
-                                            <img id='teamLogo' src={require(`../../assets/teams/${data.cId}.png`)} />
+                                            <img id='teamLogo' src={require(`../../assets/cars/${data.cId}.png`)} />
                                         </section>
                                     </div>
                                 ))}

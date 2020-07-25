@@ -14,13 +14,13 @@ function App() {
         <NavBar/>
       </header>
       <section className="schedule">
-        {/* <ScheduleCard/> */}
+        <ScheduleCard/>
       </section>
       <section className="standings">
-        {/* <StandingsCard/> */}
+        <StandingsCard/>
       </section>
       <section className="results">
-        <ResultsCard/> 
+        {/* <ResultsCard/>  */}
       </section>
     </div>
   );

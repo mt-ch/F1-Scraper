@@ -56,8 +56,6 @@ export class resultsCard extends Component {
             .then(data => this.setState({ schedule: data, isLoading: false}))
     }
 
-    
-
     render() {
         const {raceResults, schedule, isLoading} = this.state;
         if (isLoading) {
@@ -78,18 +76,11 @@ export class resultsCard extends Component {
                                 </section>
                                 {/* <ButtonGroup id="button">
                                 {schedule.map(raceInfo => (
-                                    
                                     <StyledButton size="small" >{raceInfo.name}</StyledButton>
-                                    
-                                
                                 ))}
                                 </ButtonGroup> */}
-                                
                                 <section id="results">
                                     <RaceTab/>
-                                    
-                              
-                                    
                                 </section>
                         </CardContent>
                     </div>

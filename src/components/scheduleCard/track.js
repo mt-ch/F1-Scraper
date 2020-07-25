@@ -6,7 +6,6 @@ import * as THREE from "three";
 function Box(props) {
     // This reference will give us direct access to the mesh
     const mesh = useRef()
-  
     // Rotate mesh every frame, this is outside of React without overhead
     useFrame(() => (mesh.current.rotation.z += 0.01))
     const texture = useMemo(() => new THREE.TextureLoader().load(rb))
