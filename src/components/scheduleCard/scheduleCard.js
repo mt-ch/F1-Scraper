@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { Card, CardContent, styled, Box} from '@material-ui/core';
+import React, { Component } from 'react'
+import { Card, CardContent, styled, Box} from '@material-ui/core'
 import Carousel from 'react-material-ui-carousel'
-import Round from './round';
+import Round from './round'
+import GetSchedule from '../../utils/getSchedule'
 
 const MyCard = styled(Card)({
     background: '#574f7d85',
@@ -26,7 +27,6 @@ async function getCurrentSchedule(){
         schedule.push(
             createSchedule(rnd, name, date, time, trackName, localName, country )
         )
-        
     }
     console.table(schedule)
     return schedule
@@ -42,7 +42,7 @@ export class scheduleCard extends Component {
     }
     componentWillMount(){
         this.setState({ isLoading: true });
-        getCurrentSchedule()
+        GetSchedule()
             .then(data => this.setState({ rSchedule: data, isLoading: false,}));
     }
     render() {

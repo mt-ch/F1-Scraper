@@ -15,6 +15,7 @@
     "react-bootstrap": "^1.1.1",
     "react-dom": "^16.13.1",
     "react-image-scroller": "^0.3.0",
+    "react-loading": "^2.0.3",
     "react-material-ui-carousel": "^1.6.0",
     "react-responsive-carousel": "^3.2.9",
     "react-router": "^5.2.0",

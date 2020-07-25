@@ -3,6 +3,7 @@ import {
     Card, CardContent, styled, Button,
     ButtonGroup, withStyles
 } from '@material-ui/core';
+import ReactLoading from 'react-loading';
 import './css/standings.scss';
 
 const MyCard = styled(Card)({
@@ -110,7 +111,15 @@ export class standingsCard extends Component {
     render() {
         const { dStandings, cStandings, isLoading, driver, constructor } = this.state;
         if (isLoading) {
-            return <p>Loading ...</p>;
+            return(
+            <div id="card">
+                <MyCard>
+                    <div id="bg">                   
+                        <ReactLoading type={"spinningBubbles"} color={'white'} height={'20%'} width={'20%'}/>
+                    </div>    
+                </MyCard>            
+            </div>
+            )
         }
         if (driver) {
             return (
