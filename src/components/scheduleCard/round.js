@@ -4,6 +4,7 @@ import Track from './track'
 
 export default function Round({schedule}){
     return (
+        // iterate schedule info for each slide
         <section id="info">
             <h2 id="date">Round {schedule.round} | {moment(schedule.date).format("Do MMM") } </h2>
             <div id="country-grid">

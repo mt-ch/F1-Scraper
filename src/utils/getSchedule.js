@@ -12,8 +12,6 @@ export default async function getSchedule(){
         schedule.push(
             createSchedule(rnd, name, date, time, trackName, localName, country )
         )
-        
     }
-    console.table(schedule)
     return schedule
 }

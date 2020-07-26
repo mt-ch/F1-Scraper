@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import {
-    Card, CardContent, styled, Button,
-    ButtonGroup, withStyles
-} from '@material-ui/core';
+import { Card, CardContent, styled, Button, ButtonGroup, withStyles } from '@material-ui/core';
 import ReactLoading from 'react-loading';
+import GetDriverStandings from '../../utils/getDriverStandings';
+import GetConstructorStandings from '../../utils/getConstructorStandings';
+import DriverStandings from './driverStandings';
+import ConstructorStandings from './constructorStandings';
 import './css/standings.scss';
 
 const MyCard = styled(Card)({
@@ -31,47 +32,6 @@ const StyledButton = withStyles({
       fontSize: '0.8em'
     },
 })(Button);
-
-function createDriverData(dId, firstName, lastName, nationality, number, pos, pts, wins, cId, cName) {
-    return { dId, firstName, lastName, nationality, number, pos, pts, wins, cId, cName };
-}
-
-function createDataConstructors(cId, pos, constructor, pts, wins) {
-    return { cId, pos, constructor, pts, wins };
-}
-
-let driverStand = [];
-let constructorStand = [];
-
-async function getDriverStandings() {
-    const url = "http://ergast.com/api/f1/current/driverStandings.json";
-    const response = await fetch(url);
-    const data = await response.json();
-    const { MRData: { StandingsTable: { StandingsLists: [list] } } } = data;
-    const { season, round, DriverStandings } = list;
-
-    for (const { position: pos, points: pts, wins: win, Driver: { driverId: dId, permanentNumber: number, familyName: lastName, givenName: firstName, nationality: country }, Constructors: [{ constructorId: cId, name: cName }] } of DriverStandings) {
-        driverStand.push(
-            createDriverData(dId, firstName, lastName, country, number, pos, pts, win, cId, cName)
-        )
-    }
-    return driverStand;
-}
-
-async function getConstructorStandings() {
-    const url = "http://ergast.com/api/f1/current/constructorStandings.json";
-    const response = await fetch(url);
-    const data = await response.json();
-    const { MRData: { StandingsTable: { StandingsLists: [list] } } } = data;
-    const { season, round, ConstructorStandings } = list;
-
-    for (const { position: pos, positionText: posTxt, points: pts, wins: win, Constructor: { constructorId: cId, name: teamName, } } of ConstructorStandings) {
-        constructorStand.push(
-            createDataConstructors(cId, pos, teamName, pts, win)
-        )
-    }
-    return constructorStand;
-}
 
 export class standingsCard extends Component {
     constructor(props) {
@@ -101,10 +61,10 @@ export class standingsCard extends Component {
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        getDriverStandings()
+        GetDriverStandings()
             .then(data => this.setState({ dStandings: data, isLoading: false }));
 
-        getConstructorStandings()
+        GetConstructorStandings()
             .then(data => this.setState({ cStandings: data, isLoading: false }));
     }
 
@@ -136,23 +96,7 @@ export class standingsCard extends Component {
                                 </section>
                                 {dStandings.map(data =>
                                     (
-                                        <div id="driverInfo" >
-                                            <section id="pos">
-                                                <h1><strong>{data.pos}</strong></h1>
-                                            </section>
-                                            <section id="name">
-                                                <p><strong>{data.firstName} {data.lastName}</strong></p>
-                                                <p>{data.cName}</p>
-                                            </section>
-                                            <img id="flag"src={require(`../../assets/flags/${data.nationality}.png`)}/>
-                                            <section id="points">
-                                                <h3><strong>{data.pts} Pts</strong></h3>
-                                            </section>
-                                            <div id="driver">
-                                                <img id='icon' src={require(`../../assets/drivers/${data.dId}.png`)} />
-                                                <h5 id="number">{data.number}</h5>
-                                            </div>
-                                        </div>
+                                        <DriverStandings data={data}/>
                                     ))}
                             </CardContent>
                         </div>
@@ -173,25 +117,10 @@ export class standingsCard extends Component {
                                         <StyledButton size="small" onClick={this.handleConstructor}>Team</StyledButton>
                                     </ButtonGroup>
                                 </section>
-                                <div>
                                 {cStandings.map(data =>
                                     (
-                                    <div id="driverInfo">
-                                        <section id="pos">
-                                            <h1><strong>{data.pos}</strong></h1>
-                                        </section>
-                                        <section id="name">
-                                            <p><strong>{data.constructor}</strong></p>
-                                        </section>
-                                        <section id="points">
-                                            <h3><strong>{data.pts} Pts</strong></h3>
-                                        </section>
-                                        <section id="driver">
-                                            <img id='teamLogo' src={require(`../../assets/cars/${data.cId}.png`)} />
-                                        </section>
-                                    </div>
+                                    <ConstructorStandings data={data}/>
                                 ))}
-                                </div>
                             </CardContent>
                         </div>
                     </MyCard>
