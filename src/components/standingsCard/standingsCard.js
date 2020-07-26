@@ -85,7 +85,7 @@ export class standingsCard extends Component {
             return (
                 <div id="card">
                     <MyCard>
-                        <div id="bg">
+                        <div id="bg"></div>
                             <CardContent>
                                 <section id="header">
                                     <h1 id="title"><strong>Standings</strong></h1>
@@ -99,7 +99,6 @@ export class standingsCard extends Component {
                                         <DriverStandings data={data}/>
                                     ))}
                             </CardContent>
-                        </div>
                     </MyCard>
                 </div>
             )
@@ -108,7 +107,7 @@ export class standingsCard extends Component {
             return (
                 <div id="card">
                     <MyCard>
-                        <div id="bg">
+                        <div id="bg"></div>
                             <CardContent>
                                 <section id="header">
                                     <h1 id="title">Standings</h1>
@@ -122,7 +121,6 @@ export class standingsCard extends Component {
                                     <ConstructorStandings data={data}/>
                                 ))}
                             </CardContent>
-                        </div>
                     </MyCard>
                 </div>
             )

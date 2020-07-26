@@ -32,9 +32,8 @@ export class scheduleCard extends Component {
             return (
             <div id="card">
                 <MyCard>
-                    <div id="bg">                   
-                        <ReactLoading type={"spinningBubbles"} color={'white'} height={'20%'} width={'20%'}/>
-                    </div>    
+                    <div id="bg"> </div>                    
+                    <ReactLoading type={"spinningBubbles"} color={'white'} height={'20%'} width={'20%'}/>
                 </MyCard>            
             </div>
             )
@@ -43,7 +42,7 @@ export class scheduleCard extends Component {
         return (
             <div id="card">
                 <MyCard>
-                    <div id="bg">
+                    <div id="bg"> </div>
                         <CardContent>                    
                             <Carousel
                                 next={ () => {/* Do stuff */} }
@@ -56,7 +55,6 @@ export class scheduleCard extends Component {
                                 ))}
                             </Carousel>
                         </CardContent>
-                    </div>
                 </MyCard>
             </div>
         )

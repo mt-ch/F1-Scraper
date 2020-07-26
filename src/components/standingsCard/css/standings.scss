@@ -74,7 +74,7 @@ body{
   #driverInfo{
     display: grid;
     grid-template-columns: 0.5fr 2fr 1.5fr 1fr ;
-    grid-template-rows: 0.5fr 0.5fr;
+    grid-template-rows: 0.5fr 1fr;
     grid-template-areas: 
     "pos   name   driver points"
     "pos  name  driver flag";
@@ -82,11 +82,15 @@ body{
     border-style: solid;
     border-radius: 1em 1em 1em 1em;
     border-color: #f3f3f325;
+    margin: auto;
     margin: 0.5em 0em 0.5em 0em;
-    padding: 0 0.5em 0 0.5em;
+    padding: 0em 0em 0em 0em;
     background-image: url('../../../assets/textures/dotTexture.png');
     background-size: cover;
     align-content: space-between;
+    //min-width: 20vh;
+    width: 100%;
+    height: auto;
     
     #flag{
       width: 100%;
@@ -111,7 +115,7 @@ body{
       grid-area: pos;
       align-self: center;
       justify-self: center;
-      padding: 0.3em;
+      padding-left: 0.5em;
     }
 
     #number{
@@ -122,6 +126,7 @@ body{
       grid-area: points;
       align-self: center;
       justify-self: start;
+      padding-top: 0.5em; 
     }
 
     #teamName{

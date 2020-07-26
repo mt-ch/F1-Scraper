@@ -25,25 +25,39 @@ body{
   #card{
     display: grid;
     margin: 1em;
+
+    #bg{
+      position: relative; 
+      display: flex;
+    }
+  
+    #bg::before{
+      content: "";
+      background-image: url('../assets/textures/textureCard.jpg');
+      background-size: cover;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.25;  
+      z-index: -1;
+      filter: grayscale(100%);
+    }
   } 
+}
 
-  #bg{
-    position: relative; 
-    display: flex;
+//App
+.main-container{
+  #standings{
+    width: 100%;
+    height: auto;
+    max-width: 50vh;
   }
-
-  #bg::before{
-    content: "";
-    background-image: url('../assets/textures/textureCard.jpg');
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.25;  
-    z-index: -1;
-    filter: grayscale(100%);
+  #schedule{
+    width: 100%;
+    height: auto;
+    max-width: 50vh;
   }
 }
 
@@ -97,7 +111,7 @@ body{
 
   #country-grid {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr auto;
     grid-template-areas: "country track";
     justify-content: space-between;
   }

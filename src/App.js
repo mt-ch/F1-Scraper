@@ -9,17 +9,17 @@ import ResultsCard from './components/resultsCards/resultsCard';
 
 function App() {
   return (
-    <div className="grid-container">
+    <div className="main-container">
       <header>
         <NavBar/>
       </header>
-      <section className="schedule">
+      <section id="schedule">
         <ScheduleCard/>
       </section>
-      <section className="standings">
+      <section id="standings">
         <StandingsCard/>
       </section>
-      <section className="results">
+      <section id="results">
         {/* <ResultsCard/>  */}
       </section>
     </div>
