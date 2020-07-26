@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Track from './track';
 import moment from 'moment'
+import Track from './track'
 
 export default function Round({schedule}){
     return (
@@ -12,7 +12,7 @@ export default function Round({schedule}){
                     <img id='img' src={require(`../../assets/scheduleFlags/${schedule.country}.png`)} />
                 </div>
                 <div id="track">
-                    <Track/>
+                    <Track country={schedule.country}/>
                 </div>
             </div>
             <h3>{schedule.name}</h3>

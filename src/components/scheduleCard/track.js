@@ -1,17 +1,18 @@
-import React, { Component, useRef, useState, useMemo } from 'react'
+import React, { Component, useRef, useMemo } from 'react'
 import { Canvas, useFrame } from 'react-three-fiber'
-import rb from '../../assets/tracks/RBring.png'
 import * as THREE from "three";
 
-function Box(props) {
+function Box(track) {
     // This reference will give us direct access to the mesh
+    console.log(track)
     const mesh = useRef()
     // Rotate mesh every frame, this is outside of React without overhead
     useFrame(() => (mesh.current.rotation.z += 0.01))
-    const texture = useMemo(() => new THREE.TextureLoader().load(rb))
+    const texture = useMemo(() => new THREE.TextureLoader().load(require(`../../assets/tracks/${track.track}.png`)))
     return (
       <mesh
-        {...props}
+        position={[0, 0, 0]} 
+        rotation={[-1, 0, 0]}
         ref={mesh}>
         <planeBufferGeometry attach="geometry" args={[4, 4]} />
         <meshPhongMaterial attach="material" map = {texture} />
@@ -19,14 +20,13 @@ function Box(props) {
     )
   }
 
-export class track extends Component {
-    render() {
+export default function track({country}) {
+   
         return (
-            <Canvas camera={{ fov: 60, position: [0, 0, 5] }} colorManagement style={{height:100,width: 150}}>
-                <Box position={[0, 0, 0]} rotation={[-1, 0, 0]}/>
-            </Canvas>
+            <Canvas camera={{ fov: 100, position: [0, 0, 4] }} style={{height:100,width: 200}}>
+                    <Box track={country}/>
+                </Canvas>
         )
-    }
+    
 }
 
-export default track

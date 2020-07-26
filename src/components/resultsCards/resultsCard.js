@@ -76,6 +76,7 @@ export class resultsCard extends Component {
                                 </section>
                                 {/* <ButtonGroup id="button">
                                 {schedule.map(raceInfo => (
+                                    
                                     <StyledButton size="small" >{raceInfo.name}</StyledButton>
                                 ))}
                                 </ButtonGroup> */}

@@ -96,20 +96,21 @@ body{
   }
 
   #country-grid {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "country track";
     justify-content: space-between;
   }
   #country {
     align-self: center;
     display: flex;
     flex-direction: row;
+    grid-area: country;
   }
 
   #track{
     width: 100%;
-    max-width: 5em;
     height: auto;
-    margin-left: -0.5em
+    grid-area: track;
   }
 } 
