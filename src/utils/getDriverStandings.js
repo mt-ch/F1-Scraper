@@ -8,7 +8,7 @@ export default async function getDriverStandings() {
     const response = await fetch(url);
     const data = await response.json();
     const { MRData: { StandingsTable: { StandingsLists: [list] } } } = data;
-    const { season, round, DriverStandings } = list;
+    const { DriverStandings } = list;
 
     for (const { position: pos, points: pts, wins: win, Driver: { driverId: dId, permanentNumber: number, familyName: lastName, givenName: firstName, nationality: country }, Constructors: [{ constructorId: cId, name: cName }] } of DriverStandings) {
         driverStand.push(

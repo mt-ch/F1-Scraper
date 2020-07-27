@@ -21,7 +21,7 @@ export class scheduleCard extends Component {
             isLoading: false,
         };
     }
-    componentWillMount(){
+    componentDidMount(){
         this.setState({ isLoading: true });
         GetSchedule()
             .then(data => this.setState({ rSchedule: data, isLoading: false,}));
@@ -51,7 +51,9 @@ export class scheduleCard extends Component {
                                 autoPlay={false}
                             >
                                 {rSchedule.map(schedule => (
+                                <div key={schedule.date}>
                                     <Round schedule={schedule}/>
+                                </div>
                                 ))}
                             </Carousel>
                         </CardContent>

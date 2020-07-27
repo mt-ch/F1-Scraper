@@ -9,7 +9,7 @@ export default async function getQualData(raceNumber){
     const data = await response.json();
     const { MRData: { RaceTable: { Races: [list] } } } = data;
     const { QualifyingResults } = list;
-    for (const { position: pos, Driver: { familyName: lastName, givenName: firstName }, Constructor: { name: cName }, Q1: q1, Q2: q2, Q3: q3 } of QualifyingResults) {
+    for (const { position: pos, Driver: { familyName: lastName, givenName: firstName }, Q1: q1, Q2: q2, Q3: q3 } of QualifyingResults) {
         qualResult.push(
             createQualData(pos, firstName, lastName, q1, q2, q3)
         )

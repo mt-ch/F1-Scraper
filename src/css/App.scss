@@ -52,20 +52,20 @@ body{
   #standings{
     width: 100%;
     height: auto;
-    max-width: 50vh;
+    max-width: 60vh;
   }
   #schedule{
     width: 100%;
     height: auto;
-    max-width: 50vh;
+    max-width: 60vh;
   }
 }
 
 //Nav
 #toolbar{
   background: rgb(0,0,0);
-  background: linear-gradient(180deg, rgba(0,0,0,1) 63%, rgba(255,255,255,0) 100%);
-  opacity: 1;
+  background: rgba(0, 0, 0, 0.219);
+  height: 1em;
 
   #logo{
     width: 100%;
@@ -82,7 +82,7 @@ body{
     margin: 0;
   }
   h2 {
-    font-size: 1.5em;
+    font-size: 1.25em;
     font-weight: bold;
     color: color(text);
     margin: 0;
@@ -95,7 +95,7 @@ body{
   }
 
   p{
-    font-size: 1em;
+    font-size: 0.8em;
     font-weight: lighter;
     color: color(text);
     margin: 0;
@@ -112,7 +112,12 @@ body{
   #country-grid {
     display: grid;
     grid-template-columns: 1fr auto;
-    grid-template-areas: "country track";
+    grid-template-rows: auto auto 0fr;
+    grid-template-areas: 
+    "date    track"
+    "country track"
+    "raceInfo track"
+    ;
     justify-content: space-between;
   }
   #country {
@@ -126,5 +131,14 @@ body{
     width: 100%;
     height: auto;
     grid-area: track;
+  }
+
+  #date{
+    grid-area: date;
+    align-self: end;
+  }
+
+  #raceInfo{
+    grid-area: raceInfo;
   }
 } 

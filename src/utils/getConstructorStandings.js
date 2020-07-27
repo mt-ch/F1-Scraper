@@ -8,9 +8,9 @@ export default async function getConstructorStandings() {
     const response = await fetch(url);
     const data = await response.json();
     const { MRData: { StandingsTable: { StandingsLists: [list] } } } = data;
-    const { season, round, ConstructorStandings } = list;
+    const { ConstructorStandings } = list;
 
-    for (const { position: pos, positionText: posTxt, points: pts, wins: win, Constructor: { constructorId: cId, name: teamName, } } of ConstructorStandings) {
+    for (const { position: pos, points: pts, wins: win, Constructor: { constructorId: cId, name: teamName, } } of ConstructorStandings) {
         constructorStand.push(
             createDataConstructors(cId, pos, teamName, pts, win)
         )

@@ -7,7 +7,7 @@ export class navBar extends Component {
         return (
             <AppBar position="static" style={{ background: '#FFFFFF00', boxShadow: 'none'}}>
                 <Toolbar id="toolbar">
-                    <img id="logo" src={logo}/>
+                    <img id="logo" src={logo} alt={'f1'}/>
                     <p><strong>Scraper</strong></p>
                 </Toolbar>    
             </AppBar>

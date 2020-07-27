@@ -21,7 +21,6 @@ const StyledButton = withStyles({
       border: 0,
       color: '#f5f5f5',
       padding: '0 1em 0 1em',
-      border: 0,
       borderRadius: '2em',
       boxShadow: '0 3px 5px 2px rgba(6, 6, 6, .2)'
     },
@@ -96,7 +95,9 @@ export class standingsCard extends Component {
                                 </section>
                                 {dStandings.map(data =>
                                     (
+                                    <div key={data.pos}>
                                         <DriverStandings data={data}/>
+                                    </div>
                                     ))}
                             </CardContent>
                     </MyCard>
@@ -118,7 +119,9 @@ export class standingsCard extends Component {
                                 </section>
                                 {cStandings.map(data =>
                                     (
-                                    <ConstructorStandings data={data}/>
+                                    <div key={data.pos}>
+                                        <ConstructorStandings data={data}/>
+                                    </div>
                                 ))}
                             </CardContent>
                     </MyCard>

@@ -1,4 +1,4 @@
-import React, { Component, useRef, useMemo } from 'react'
+import React, { useRef } from 'react'
 import { Canvas, useFrame } from 'react-three-fiber'
 import * as THREE from "three";
 
@@ -8,7 +8,7 @@ function Plane(track) {
     // rotate plane every frame
     useFrame(() => (mesh.current.rotation.z += 0.01))
     // load texture of track onto mesh
-    const texture = useMemo(() => new THREE.TextureLoader().load(require(`../../assets/tracks/${track.track}.png`)))
+    const texture = new THREE.TextureLoader().load(require(`../../assets/tracks/${track.track}.png`))
     return (
       <mesh
         // position the scene

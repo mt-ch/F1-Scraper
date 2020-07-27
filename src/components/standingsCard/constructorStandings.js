@@ -14,7 +14,7 @@ export default function constructorStandings({data}) {
                 <h3><strong>{data.pts} Pts</strong></h3>
             </section>
             <section id="driver">
-                <img id='teamLogo' src={require(`../../assets/cars/${data.cId}.png`)} />
+                <img id='teamLogo' src={require(`../../assets/cars/${data.cId}.png`)} alt={'Team car'} />
             </section>
         </div>
     )
