@@ -111,14 +111,16 @@ body{
 
   #country-grid {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr;
     grid-template-rows: auto auto 0fr;
     grid-template-areas: 
-    "date    track"
+    "date    date"
     "country track"
     "raceInfo track"
     ;
     justify-content: space-between;
+    align-content: center;
+    min-height: 19vh;
   }
   #country {
     align-self: center;
@@ -131,6 +133,7 @@ body{
     width: 100%;
     height: auto;
     grid-area: track;
+    align-self: center;
   }
 
   #date{

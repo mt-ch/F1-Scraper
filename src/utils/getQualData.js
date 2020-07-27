@@ -4,7 +4,7 @@ function createQualData(pos, firstName, lastName, q1, q2, q3) {
 
 export default async function getQualData(raceNumber){
     let qualResult = [];
-    const url = "http://ergast.com/api/f1/2020/1/qualifying.json";
+    const url = "http://ergast.com/api/f1/2020/"+raceNumber+"/qualifying.json";
     const response = await fetch(url);
     const data = await response.json();
     const { MRData: { RaceTable: { Races: [list] } } } = data;
@@ -14,6 +14,5 @@ export default async function getQualData(raceNumber){
             createQualData(pos, firstName, lastName, q1, q2, q3)
         )
     }
-    console.table(qualResult)
     return qualResult;
 }

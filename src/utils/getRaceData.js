@@ -4,7 +4,7 @@ function createRaceData(pos, firstName, lastName, points, time) {
 
 export default async function getRaceData(raceNumber){
     let resultRace = [];
-    const url = "http://ergast.com/api/f1/2020/1/results.json";
+    const url = "http://ergast.com/api/f1/2020/"+raceNumber+"/results.json";
     const response = await fetch(url);
     const data = await response.json();
     const { MRData: { RaceTable: { Races: [list] } } } = data;
@@ -15,6 +15,5 @@ export default async function getRaceData(raceNumber){
             createRaceData(pos, firstName, lastName, pts)
         )
     }
-    console.table(resultRace)
     return resultRace;
 }
