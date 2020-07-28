@@ -6,6 +6,7 @@ $colors: (
     primary-light: lighten(#574f7d, 40%),
     primary-dark: darken(#574f7d, 40%),
     accent: #7e0000,
+    text: #f5f5f5,
 );
 
 // get color
@@ -145,3 +146,48 @@ body{
     grid-area: raceInfo;
   }
 } 
+
+section#results{
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+
+.rc-tabs {
+  border: none !important;
+}
+.rc-tabs-tab {
+  padding: 0em;
+  text-transform: capitalize;
+  
+}
+.rc-tabs-tab-btn {
+  font-size: 0.7em;
+  background: #6b6392!important;
+  border: 0;
+  color: #f5f5f5;
+}
+
+.rc-tabs-tab-active {
+}
+
+.rc-tabs-ink-bar {
+  background: #574f7d!important;
+}
+.rc-tabs-content-holder {
+  padding: 10px;
+}
+.rc-tabs-content {
+}
+
+.rc-tabs-nav-more{
+  border: 0!important;
+  background: #6b6392!important;
+  font-family: 'Orbitron';
+  font-size: 0.7em;
+  color: color(text);
+}
+
+.rc-tabs-nav-measure{
+  border: none!important;
+}

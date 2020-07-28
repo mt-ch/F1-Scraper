@@ -1,5 +1,5 @@
-function createQualData(pos, firstName, lastName, q1, q2, q3) {
-    return { pos, firstName, lastName, q1, q2, q3 };
+function createQualData(pos, name, q1, q2, q3) {
+    return { pos, name, q1, q2, q3 };
 }
 
 export default async function getQualData(raceNumber){
@@ -9,10 +9,12 @@ export default async function getQualData(raceNumber){
     const data = await response.json();
     const { MRData: { RaceTable: { Races: [list] } } } = data;
     const { QualifyingResults } = list;
-    for (const { position: pos, Driver: { familyName: lastName, givenName: firstName }, Q1: q1, Q2: q2, Q3: q3 } of QualifyingResults) {
+    for (const { position: pos, Driver: { familyName: lastName, givenName: firstName }, Q1: q1, Q2: q2 = 'n/a', Q3: q3 = 'n/a'} of QualifyingResults) {
+        const name = firstName.slice(0, 1)+'.'+lastName;
         qualResult.push(
-            createQualData(pos, firstName, lastName, q1, q2, q3)
+            createQualData(pos, name, q1, q2, q3)
         )
     }
+    console.table(qualResult)
     return qualResult;
 }

@@ -37,13 +37,14 @@ export class resultsCard extends Component {
         return (
             <div id="card">
                 <MyCard>
-                    <div id="bg">
                         <CardContent>
-                                <section id="results">
-                                    <RaceTab schedule={schedule}/>
-                                </section>
+                            <section id="header">
+                                <h1 id="title"><strong>Results</strong></h1>
+                            </section>
+                            <section id="results">
+                                <RaceTab schedule={schedule}/>
+                            </section>
                         </CardContent>
-                    </div>
                 </MyCard>
             </div>
         )

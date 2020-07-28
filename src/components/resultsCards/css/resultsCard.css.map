@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AA+GA,AAAA,iBAAiB,CAAA;EACb,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;CACtB;;AAED,AAAA,OAAO,CAAA;EACH,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;CACtB",
     "sources": [
         "resultsCard.scss"
     ],
