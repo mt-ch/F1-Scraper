@@ -8,7 +8,7 @@ import './css/resultsCard.scss';
 
 const StyledButton = withStyles({
     root: {
-      background: '#00000085',
+      background: '#222222',
       border: 0,
       color: '#f5f5f5',
       padding: '0 1em 0 1em',

@@ -9,7 +9,7 @@ export default function raceTab({schedule}) {
       <Tabs
         //tabBarPosition='top'
         tabBarGutter={true ? 10 : null}
-        tabBarStyle={{background: '#6b6392', borderRadius: '1em', padding: '0.5em' }}
+        tabBarStyle={{background: '#222222', borderRadius: '1em', padding: '0.4em', boxShadow: '0 3px 5px 2px rgba(6, 6, 6, .2)'}}
       >
         {schedule.map(data => (
           <TabPane key={data.name} tab={data.name}>
