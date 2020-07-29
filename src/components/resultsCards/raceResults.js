@@ -12,7 +12,6 @@ const StyledButton = withStyles({
       border: 0,
       color: '#f5f5f5',
       padding: '0 1em 0 1em',
-      border: 0,
       borderRadius: '2em',
       boxShadow: '0 3px 5px 2px rgba(6, 6, 6, .2)'
     },

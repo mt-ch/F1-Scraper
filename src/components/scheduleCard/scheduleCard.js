@@ -41,9 +41,9 @@ export class scheduleCard extends Component {
         else
         return (
             <div id="card">
-                <MyCard>
+                {/* <MyCard>
                     <div id="bg"> </div>
-                        <CardContent>                    
+                        <CardContent>                     */}
                             <Carousel
                                 next={ () => {/* Do stuff */} }
                                 prev={ () => {/* Do other stuff */} }
@@ -56,8 +56,8 @@ export class scheduleCard extends Component {
                                 </div>
                                 ))}
                             </Carousel>
-                        </CardContent>
-                </MyCard>
+                        {/* </CardContent>
+                </MyCard> */}
             </div>
         )
     }

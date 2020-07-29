@@ -83,9 +83,9 @@ export class standingsCard extends Component {
         if (driver) {
             return (
                 <div id="card">
-                    <MyCard>
+                    {/* <MyCard>
                         <div id="bg"></div>
-                            <CardContent>
+                            <CardContent> */}
                                 <section id="header">
                                     <h1 id="title"><strong>Standings</strong></h1>
                                     <ButtonGroup id="button">
@@ -99,8 +99,8 @@ export class standingsCard extends Component {
                                         <DriverStandings data={data}/>
                                     </div>
                                     ))}
-                            </CardContent>
-                    </MyCard>
+                            {/* </CardContent>
+                    </MyCard> */}
                 </div>
             )
         }

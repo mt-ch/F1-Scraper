@@ -36,16 +36,16 @@ export class resultsCard extends Component {
         else
         return (
             <div id="card">
-                <MyCard>
-                        <CardContent>
-                            <section id="title">
-                                <h1 id="title"><strong>Results</strong></h1>
-                            </section>
-                            <section id="results">
-                                <RaceTab schedule={schedule}/>
-                            </section>
-                        </CardContent>
-                </MyCard>
+                {/* <MyCard>
+                    <CardContent> */}
+                        <section id="title">
+                            <h1 id="title"><strong>Results</strong></h1>
+                        </section>
+                        <section id="resultsTable">
+                            <RaceTab schedule={schedule}/>
+                        </section>
+                    {/* </CardContent>
+                </MyCard> */}
             </div>
         )
     }

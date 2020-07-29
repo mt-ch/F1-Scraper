@@ -60,6 +60,11 @@ body{
     height: auto;
     max-width: 60vh;
   }
+  #results{
+    width: 100%;
+    height: auto;
+    max-width: 60vh;
+  }
 }
 
 //Nav
@@ -189,4 +194,18 @@ section#results{
   font-family: 'Orbitron';
   font-size: 0.8em;
   color: color(text);
+}
+
+#raceDetail{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.5em 0 1em 0;
+
+  h5{
+    font-size: 1em;
+    font-weight: bold;
+    color: color(text);
+    margin: 0;
+  }
 }

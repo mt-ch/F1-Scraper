@@ -1,6 +1,7 @@
 import React from 'react';
 import Tabs, { TabPane } from 'rc-tabs';
 import RaceResults from './raceResults';
+import moment from 'moment'
 import '../../../node_modules/rc-tabs/assets/index.css';
 
 export default function raceTab({schedule}) {
@@ -13,6 +14,11 @@ export default function raceTab({schedule}) {
       >
         {schedule.map(data => (
           <TabPane key={data.name} tab={data.name}>
+            <div id="raceDetail">
+              <h5>Round {data.round} | {moment(data.date).format("Do MMM")} </h5>
+              <h5>{data.country} - {data.localName}</h5>
+              <h5>{data.circuit}</h5>
+            </div>
             <RaceResults round={data.round}/>
           </TabPane>
         ))}
@@ -20,5 +26,4 @@ export default function raceTab({schedule}) {
     </div>
   )
 }
-
 
