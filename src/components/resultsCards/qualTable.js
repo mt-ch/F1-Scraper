@@ -3,31 +3,49 @@ import { makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHe
 import '../../css/App.scss'
 
 const columns = [
-    { id: 'pos', label: 'Pos', maxWidth: 5 },
-    { id: 'name', label: 'Driver', maxWidth: 10 },
-    { id: 'q1', label: 'Q1', maxWidth: 10, align: 'center'},
-    { id: 'q2', label: 'Q2', maxWidth: 10, align: 'center'}, 
-    { id: 'q3', label: 'Q3', maxWidth: 10, align: 'center'}, 
+  { id: 'pos', label: 'Pos', },
+  { id: 'name', label: 'Driver', },
+  { id: 'q1', label: 'Q1', align: 'center' },
+  { id: 'q2', label: 'Q2', align: 'center' },
+  { id: 'q3', label: 'Q3', align: 'center' },
 ];
 
 const useStyles = makeStyles({
   root: {
     width: '100%',
+    height: 'auto',
     backgroundColor: '#6b6392',
-    borderRadius: '1em'
+    borderRadius: '1em',
+    margin: 'auto',
+    padding: '0.5em'
   },
   container: {
     maxHeight: 400,
   },
-  tRow: {
-  },
   tCell: {
     color: 'white',
+    fontSize: '0.9em',
+    margin: 'auto',
+    border: 0,
+    padding: '0.3em'
+  },
+  tCellHeader: {
+    padding: '0.2em',
+    minWidth: '1em',
+    backgroundColor: '#6b639200',
+    color: 'white',
+    fontWeight: 'bold',
+    fontFamily: 'Orbitron',
+    fontSize: '0.9em',
+  },
+  tPage: {
+    color: 'white',
+    fontFamily: 'Orbitron',
     margin: 0
   }
 });
 
-export default function QualTable({data}) {
+export default function QualTable({ data }) {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -40,18 +58,18 @@ export default function QualTable({data}) {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-  if(data !== true){
+  if (data !== true) {
     return (
       <Paper className={classes.root}>
         <TableContainer className={classes.container}>
-          <Table size='small' stickyHeader aria-label="sticky table">
+          <Table size='small' stickyHeader>
             <TableHead>
               <TableRow>
                 {columns.map((column) => (
                   <TableCell
+                    className={classes.tCellHeader}
                     key={column.id}
                     align={column.align}
-                    style={{ maxWidth: column.maxWidth, backgroundColor:'#6b639200', color:'white', fontWeight:'bold', fontFamily:'Orbitron'}}
                   >
                     {column.label}
                   </TableCell>
@@ -77,6 +95,7 @@ export default function QualTable({data}) {
           </Table>
         </TableContainer>
         <TablePagination
+          className={classes.tPage}
           rowsPerPageOptions={[5, 10, 20]}
           component="div"
           count={data.length}
@@ -84,15 +103,15 @@ export default function QualTable({data}) {
           page={page}
           onChangePage={handleChangePage}
           onChangeRowsPerPage={handleChangeRowsPerPage}
-          style={{color:'white', fontFamily:'Orbitron'}}
+          labelRowsPerPage={'Drivers:'}
         />
       </Paper>
     );
   }
-  else{
-    return(
+  else {
+    return (
       <div></div>
     )
   }
- 
+
 }

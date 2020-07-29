@@ -30,8 +30,8 @@ export class raceResults extends Component {
             raceResults: [],
             qualResults: [],
             isLoading: false,
-            qual: true,
-            race: false
+            qual: false,
+            race: true
         };
     }
 

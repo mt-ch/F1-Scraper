@@ -3,25 +3,43 @@ import { makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHe
 import '../../css/App.scss'
 
 const columns = [
-    { id: 'pos', label: 'Pos', maxWidth: 5 },
-    { id: 'name', label: 'Driver', maxWidth: 10 },
-    { id: 'time', label: 'Time', maxWidth: 5,  align: 'center'},
-    { id: 'points', label: 'Points', maxWidth: 5,  align: 'center'},
+    { id: 'pos', label: 'Pos' },
+    { id: 'name', label: 'Driver'},
+    { id: 'time', label: 'Time', align: 'center'},
+    { id: 'points', label: 'Points',  align: 'center'},
 ];
 
 const useStyles = makeStyles({
   root: {
     width: '100%',
+    height: 'auto',
     backgroundColor: '#6b6392',
-    borderRadius: '1em'
+    borderRadius: '1em',
+    margin: 'auto',
+    padding: '0.5em'
   },
   container: {
     maxHeight: 400,
   },
-  tRow: {
-  },
   tCell: {
     color: 'white',
+    fontSize: '0.9em',
+    margin: 'auto',
+    border: 0,
+    padding: '0.3em'
+  },
+  tCellHeader: {
+    padding: '0.2em',
+    minWidth: '1em',
+    backgroundColor: '#6b639200',
+    color: 'white',
+    fontWeight: 'bold',
+    fontFamily: 'Orbitron',
+    fontSize: '0.9em',
+  },
+  tPage: {
+    color: 'white',
+    fontFamily: 'Orbitron',
     margin: 0
   }
 });
@@ -48,9 +66,9 @@ export default function QualTable({data}) {
               <TableRow>
                 {columns.map((column) => (
                   <TableCell
+                    className={classes.tCellHeader}
                     key={column.id}
                     align={column.align}
-                    style={{ minWidth: column.minWidth, backgroundColor:'#6b639200', color:'white', fontWeight:'bold', fontFamily:'Orbitron' }}
                   >
                     {column.label}
                   </TableCell>
@@ -76,6 +94,7 @@ export default function QualTable({data}) {
           </Table>
         </TableContainer>
         <TablePagination
+          className={classes.tPage}
           rowsPerPageOptions={[5, 10, 20]}
           component="div"
           count={data.length}
@@ -83,7 +102,7 @@ export default function QualTable({data}) {
           page={page}
           onChangePage={handleChangePage}
           onChangeRowsPerPage={handleChangeRowsPerPage}
-          style={{color:'white', fontFamily:'Orbitron'}}
+          labelRowsPerPage={'Drivers:'}
         />
       </Paper>
     );

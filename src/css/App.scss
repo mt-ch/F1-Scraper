@@ -209,3 +209,20 @@ section#results{
     margin: 0;
   }
 }
+
+//Results
+#resultsTable{
+  display: grid;
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+.MuiTablePagination-caption{
+  font-size: 0.6em!important;
+  font-family: 'Orbitron'!important;
+}
+
+.MuiTablePagination-toolbar{
+
+}
