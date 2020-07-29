@@ -9,16 +9,15 @@ export default function raceTab({schedule}) {
     <div style={{display: 'grid',
       width: '100%',
       height: 'auto',
-      margin: 'auto',
       margin: '0.5em 0 0.5em 0'}}
       >
       <Tabs
         //tabBarPosition='top'
         tabBarGutter={true ? 10 : null}
-        tabBarStyle={{background: '#222222', borderRadius: '1em', padding: '0.4em', boxShadow: '0 3px 5px 2px rgba(6, 6, 6, .2)'}}
+        tabBarStyle={{background: '#222222', borderRadius: '1em', padding: '0.3em', boxShadow: '0 3px 5px 2px rgba(6, 6, 6, .2)'}}
       >
         {schedule.map(data => (
-          <TabPane key={data.name} tab={data.name}>
+          <TabPane key={data.shortName} tab={data.shortName}>
             {/* <div id="raceDetail">
               <h5>Round {data.round} | {moment(data.date).format("Do MMM")} </h5>
               <h5>{data.country} - {data.localName}</h5>
