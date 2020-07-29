@@ -1,30 +1,30 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
+import { makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
 import '../../css/App.scss'
 
 const columns = [
-    { id: 'pos', label: 'Pos', minWidth: 50 },
-    { id: 'name', label: 'Driver', minWidth: 50 },
-    { id: 'q1', label: 'Q1', minWidth: 30},
-    { id: 'q2', label: 'Q2', minWidth: 30}, 
-    { id: 'q3', label: 'Q3', minWidth: 30}, 
+    { id: 'pos', label: 'Pos', maxWidth: 5 },
+    { id: 'name', label: 'Driver', maxWidth: 10 },
+    { id: 'q1', label: 'Q1', maxWidth: 10, align: 'center'},
+    { id: 'q2', label: 'Q2', maxWidth: 10, align: 'center'}, 
+    { id: 'q3', label: 'Q3', maxWidth: 10, align: 'center'}, 
 ];
 
 const useStyles = makeStyles({
   root: {
     width: '100%',
+    backgroundColor: '#6b6392',
+    borderRadius: '1em'
   },
   container: {
     maxHeight: 400,
   },
+  tRow: {
+  },
+  tCell: {
+    color: 'white',
+    margin: 0
+  }
 });
 
 export default function QualTable({data}) {
@@ -44,14 +44,14 @@ export default function QualTable({data}) {
   return (
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
-        <Table stickyHeader aria-label="sticky table">
+        <Table size='small' stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
               {columns.map((column) => (
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth }}
+                  style={{ maxWidth: column.maxWidth, backgroundColor:'#6b639200', color:'white', fontWeight:'bold', fontFamily:'Orbitron'}}
                 >
                   {column.label}
                 </TableCell>
@@ -61,11 +61,11 @@ export default function QualTable({data}) {
           <TableBody>
             {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
               return (
-                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                <TableRow className={classes.tRow} hover role="checkbox" tabIndex={-1} key={row.code}>
                   {columns.map((column) => {
                     const value = row[column.id];
                     return (
-                      <TableCell key={column.id} align={column.align}>
+                      <TableCell className={classes.tCell} key={column.id} align={column.align}>
                         {column.format && typeof value === 'number' ? column.format(value) : value}
                       </TableCell>
                     );
@@ -84,6 +84,7 @@ export default function QualTable({data}) {
         page={page}
         onChangePage={handleChangePage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
+        style={{color:'white', fontFamily:'Orbitron'}}
       />
     </Paper>
   );

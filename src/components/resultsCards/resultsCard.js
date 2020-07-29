@@ -38,7 +38,7 @@ export class resultsCard extends Component {
             <div id="card">
                 <MyCard>
                         <CardContent>
-                            <section id="header">
+                            <section id="title">
                                 <h1 id="title"><strong>Results</strong></h1>
                             </section>
                             <section id="results">

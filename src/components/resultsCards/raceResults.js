@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withStyles, Button, ButtonGroup, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@material-ui/core'
+import { withStyles, Button, ButtonGroup } from '@material-ui/core'
 import GetRaceData from '../../utils/getRaceData';
 import GetQualData from '../../utils/getQualData';
 import QualTable from './qualTable';
@@ -73,13 +73,6 @@ export class raceResults extends Component {
                             <StyledButton size="small" onClick={this.handleRace} >Race</StyledButton>
                         </ButtonGroup>
                     </section>
-                    {/* {raceResults.map(data => (
-                        <div id="resultsContainer">
-                            <h1>{data.pos}</h1>
-                            <h3>{data.firstName.slice(0, 1)}.{data.lastName}</h3>
-                            <h1>{data.points} Pts</h1>
-                        </div>
-                    ))} */}
                     <RaceTable data={raceResults}/>
                 </div>
             )
@@ -94,32 +87,6 @@ export class raceResults extends Component {
                             <StyledButton size="small" onClick={this.handleRace} >Race</StyledButton>
                         </ButtonGroup>
                     </section>
-                    {/* <TableContainer>
-                        <Table size="small">
-                            <TableHead>
-                            <TableRow>
-                                <TableCell align="left">Pos</TableCell>
-                                <TableCell align="left">Driver</TableCell>
-                                <TableCell align="left">Q1</TableCell>
-                                <TableCell align="left">Q2</TableCell>
-                                <TableCell align="left">Q3</TableCell>
-                            </TableRow>
-                            </TableHead>
-                            <TableBody>
-                            {qualResults.map((data) => (
-                                <TableRow key={data.pos}>
-                                <TableCell component="th" scope="row">
-                                    {data.pos}
-                                </TableCell>
-                                <TableCell align="left">{data.firstName.slice(0, 1)}.{data.lastName}</TableCell>
-                                <TableCell align="left">{data.q1}</TableCell>
-                                <TableCell align="left">{data.q2}</TableCell>
-                                <TableCell align="left">{data.q3}</TableCell>
-                                </TableRow>
-                            ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer> */}
                     <QualTable data={qualResults}/>
                 </div>
             )
