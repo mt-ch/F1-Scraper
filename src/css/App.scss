@@ -25,7 +25,8 @@ body{
   
   #card{
     display: grid;
-    margin: 1em;
+    //margin: 1em;
+    align-content: start;
 
     #bg{
       position: relative; 
@@ -45,25 +46,34 @@ body{
       z-index: -1;
       filter: grayscale(100%);
     }
-  } 
+  }
+}
+
+header{
+  min-width: 100%;
 }
 
 //App
 .main-container{
+  display: grid;
+  grid-gap: 0em;
+  grid-template-columns: repeat(auto-fit, minmax(45vh, 1fr));
+  padding: 0 1em 0 1em;
+
   #standings{
     width: 100%;
     height: auto;
-    max-width: 60vh;
+    //max-width: 60vh;
   }
   #schedule{
     width: 100%;
     height: auto;
-    max-width: 60vh;
+    min-width: 30vh;
   }
   #results{
     width: 100%;
     height: auto;
-    max-width: 60vh;
+    //max-width: 60vh;
   }
 }
 
@@ -212,10 +222,10 @@ section#results{
 
 //Results
 #resultsTable{
-  display: grid;
+  //display: grid;
   width: 100%;
   height: auto;
-  margin: auto;
+  //margin: auto;
 }
 
 .MuiTablePagination-caption{
@@ -226,3 +236,9 @@ section#results{
 .MuiTablePagination-toolbar{
 
 }
+
+// @media (min-width: 550px){
+//   #results{
+//     grid-column: auto / results;
+//   }
+// }

@@ -11,7 +11,8 @@ body {
 body #card {
   display: -ms-grid;
   display: grid;
-  margin: 1em;
+  -ms-flex-line-pack: start;
+      align-content: start;
 }
 
 body #card #bg {
@@ -36,16 +37,33 @@ body #card #bg::before {
           filter: grayscale(100%);
 }
 
+header {
+  min-width: 100%;
+}
+
+.main-container {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 0em;
+  -ms-grid-columns: (minmax(45vh, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(45vh, 1fr));
+  padding: 0 1em 0 1em;
+}
+
 .main-container #standings {
   width: 100%;
   height: auto;
-  max-width: 60vh;
 }
 
 .main-container #schedule {
   width: 100%;
   height: auto;
-  max-width: 60vh;
+  min-width: 30vh;
+}
+
+.main-container #results {
+  width: 100%;
+  height: auto;
 }
 
 #toolbar {
@@ -174,14 +192,19 @@ section#results {
 }
 
 .rc-tabs-tab-btn {
-  font-size: 0.7em;
-  background: #6b6392 !important;
+  font-size: 0.6em;
+  background: #222222 !important;
   border: 0;
   color: #f5f5f5;
 }
 
+.rc-tabs-tab-active {
+  color: #f5f5f5 !important;
+}
+
 .rc-tabs-ink-bar {
   background: #574f7d !important;
+  border-radius: 0.5em;
 }
 
 .rc-tabs-content-holder {
@@ -190,13 +213,40 @@ section#results {
 
 .rc-tabs-nav-more {
   border: 0 !important;
-  background: #6b6392 !important;
+  background: #222222 !important;
   font-family: 'Orbitron';
   font-size: 0.7em;
   color: #f5f5f5;
 }
 
-.rc-tabs-nav-measure {
-  border: none !important;
+#raceDetail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0.5em 0 1em 0;
+}
+
+#raceDetail h5 {
+  font-size: 1em;
+  font-weight: bold;
+  color: #f5f5f5;
+  margin: 0;
+}
+
+#resultsTable {
+  width: 100%;
+  height: auto;
+}
+
+.MuiTablePagination-caption {
+  font-size: 0.6em !important;
+  font-family: "Orbitron" !important;
 }
 /*# sourceMappingURL=App.css.map */

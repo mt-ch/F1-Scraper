@@ -9,19 +9,22 @@ import ResultsCard from './components/resultsCards/resultsCard';
 
 function App() {
   return (
-    <div className="main-container">
+    <div>
       <header>
         <NavBar/>
       </header>
+    <div className="main-container">
       <section id="schedule">
         <ScheduleCard/>
-      </section>
-      <section id="standings">
         <StandingsCard/>
       </section>
+      {/* <section id="standings">
+        <StandingsCard/>
+      </section> */}
       <section id="results">
         <ResultsCard/> 
       </section>
+    </div>
     </div>
   );
 }
