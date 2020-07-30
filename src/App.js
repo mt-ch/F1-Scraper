@@ -9,7 +9,7 @@ import ResultsCard from './components/resultsCards/resultsCard';
 
 function App() {
   return (
-    <div>
+    <div className="content">
       <header>
         <NavBar/>
       </header>

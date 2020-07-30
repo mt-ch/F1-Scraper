@@ -50,7 +50,7 @@ body{
 }
 
 header{
-  min-width: 100%;
+  width: 100%;
 }
 
 //App
@@ -58,7 +58,9 @@ header{
   display: grid;
   grid-gap: 0em;
   grid-template-columns: repeat(auto-fit, minmax(45vh, 1fr));
-  padding: 0 1em 0 1em;
+  //padding: 0 1em 0 1em;
+  max-width: 100vh;
+  margin: 0 auto;
 
   #standings{
     width: 100%;
