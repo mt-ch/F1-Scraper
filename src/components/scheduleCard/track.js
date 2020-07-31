@@ -23,7 +23,7 @@ function Plane(track) {
 
 export default function track({country}) {
   return (
-    <Canvas camera={{ fov: 100, position: [0, 0, 4] }} style={{height:'10em',width: '10em'}}>
+    <Canvas camera={{ fov: 100, position: [0, 0, 4] }} style={{height:'12em',width: '12em'}}>
       <Plane track={country}/>
     </Canvas>
   )

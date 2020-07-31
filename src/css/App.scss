@@ -130,7 +130,7 @@ header{
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto 0fr;
     grid-template-areas: 
-    "date    date"
+    "date    track"
     "country track"
     "raceInfo track"
     ;
@@ -147,9 +147,11 @@ header{
 
   #track{
     width: 100%;
+    max-width: 5em;
     height: auto;
     grid-area: track;
     align-self: center;
+    justify-self: start;
   }
 
   #date{
