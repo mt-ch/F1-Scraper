@@ -1,5 +1,5 @@
-function createSchedule(round, name, date, time, circuit, localName, country, shortName){
-    return {round, name, date, time, circuit, localName, country, shortName};
+function createDates(index, date){
+    return {index, date};
 }
 
 export default async function getSchedule(){
@@ -8,9 +8,8 @@ export default async function getSchedule(){
     const response = await fetch(url);
     const data = await response.json();
     const { MRData: { RaceTable: { Races } } } = data;
-    for (const {round: rnd, raceName: name, time: time, date: date, Circuit: {circuitName: trackName, Location: {locality: localName, country: country}} } of Races){
-        const shortName = name.split(" ").slice(0, -2)+" GP";
-        schedule.push(
+    for (const {round: rnd, date: date } of Races){
+        createDates.push(
             createSchedule(rnd, name, date, time, trackName, localName, country, shortName)
         )
     }

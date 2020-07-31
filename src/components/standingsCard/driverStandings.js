@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { Paper } from '@material-ui/core';
 import './css/standings.scss';
 
 export default function driverStandings({data}) {
     return (
-        <div id="driverInfo" >
+        <Paper id="driverInfo" >
             <section id="pos">
                 <h1><strong>{data.pos}</strong></h1>
             </section>
@@ -19,6 +20,6 @@ export default function driverStandings({data}) {
                 <img id='icon' src={require(`../../assets/drivers/${data.dId}.png`)} alt={"driver"} />
                 <h5 id="number">{data.number}</h5>
             </div>
-        </div>
+        </Paper>
     )
 }
