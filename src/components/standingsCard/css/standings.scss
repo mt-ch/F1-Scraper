@@ -227,10 +227,12 @@ body{
       #teamCar{
         width: 100%;
         max-width: 8em;
-        max-height: 2.5em;
+        max-height: 3em;
         height: auto;
         margin-left: 1em;
+        margin-right: 1em;
         z-index: 1;
+      align-self: center;
       }
     }
   }

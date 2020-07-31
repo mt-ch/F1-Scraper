@@ -14,7 +14,7 @@ export default function Round({schedule}){
                     <img id='img' src={require(`../../assets/scheduleFlags/${schedule.country}.png`)} alt={'Flag'} />
                 </div>
                 <div id="track">
-                    <Track country={schedule.country}/>
+                    <Track country={schedule.localName}/>
                 </div>
                 <div id="raceInfo">
                 <h3>{schedule.name}</h3>
