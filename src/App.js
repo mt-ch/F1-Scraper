@@ -7,16 +7,17 @@ import ScheduleCard from './components/scheduleCard/scheduleCard';
 import StandingsCard from './components/standingsCard/standingsCard';
 import ResultsCard from './components/resultsCards/resultsCard';
 
+
 function App() {
   return (
     <div className="content">
-      <header>
-        <NavBar/>
-      </header>
+    <header>
+      <NavBar/>
+    </header>
     <div className="main-container">
       <section id="schedule">
         <ScheduleCard/>
-        {/* <StandingsCard/> */}
+        <StandingsCard/>
       </section>
       {/* <section id="standings">
         <StandingsCard/>

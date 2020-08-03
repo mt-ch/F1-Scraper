@@ -1,113 +1,84 @@
-import React, { Component } from 'react'
-import { styled, Button, ButtonGroup, withStyles } from '@material-ui/core';
-import ReactLoading from 'react-loading';
-import GetDriverStandings from '../../utils/getDriverStandings';
-import GetConstructorStandings from '../../utils/getConstructorStandings';
-import DriverStandings from './driverStandings';
-import ConstructorStandings from './constructorStandings';
-import './css/standings.scss';
+import React, { useState, useEffect } from "react";
+import { Button, ButtonGroup, withStyles } from "@material-ui/core";
+
+import Standings from "./driverStandings";
+import Constructor from './constructorStandings';
+import Pagination from "./pagination";
+import GetDriverStandings from "../../utils/getDriverStandings";
+import GetConstructorStandings from "../../utils/getConstructorStandings";
 
 const StyledButton = withStyles({
-    root: {
-        background: '#00000085',
-        border: 0,
-        color: '#f5f5f5',
-        padding: '0 1em 0 1em',
-        borderRadius: '2em',
-        boxShadow: '0 3px 5px 2px rgba(6, 6, 6, .2)'
-    },
-    label: {
-        textTransform: 'capitalize',
-        margin: 0,
-        fontFamily: 'Orbitron',
-        fontSize: '0.8em'
-    },
+  root: {
+    background: "#00000085",
+    border: 0,
+    color: "#f5f5f5",
+    padding: "0 1em 0 1em",
+    borderRadius: "2em",
+    boxShadow: "0 3px 5px 2px rgba(6, 6, 6, .2)"
+  },
+  label: {
+    textTransform: "capitalize",
+    margin: 0,
+    fontFamily: "Orbitron",
+    fontSize: "0.8em"
+  }
 })(Button);
 
-export class standingsCard extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            dStandings: [],
-            cStandings: [],
-            isLoading: false,
-            driver: true,
-            constructor: false,
-        };
-    }
+const StandingsCard_ = () => {
+  const [standings, setDStandings] = useState([]);
+  const [cStandings, setCStandings] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [standingsPerPage, setStandingsPerPage] = useState(6);
+  const [active, setActive] = useState(true);
 
-    handleDriver = () => {
-        this.setState({
-            driver: true,
-            constructor: false
-        })
-    }
+  const paginate = pageNumber => setCurrentPage(pageNumber);
 
-    handleConstructor = () => {
-        this.setState({
-            driver: false,
-            constructor: true
-        })
-    }
+  useEffect(() => {
+    setLoading(true);
+    GetDriverStandings()
+      .then(data => setDStandings(data))
+      .then(setLoading(false));
+    GetConstructorStandings()
+      .then(data => setCStandings(data))
+      .then(setLoading(false));
+  }, []);
 
-    componentDidMount() {
-        this.setState({ isLoading: true });
-        GetDriverStandings()
-            .then(data => this.setState({ dStandings: data, isLoading: false }));
+  const indexOfLastStanding = currentPage * standingsPerPage;
+  const indexOfFirstStanding = indexOfLastStanding - standingsPerPage;
+  const currentDStandings = standings.slice(
+    indexOfFirstStanding,
+    indexOfLastStanding
+  );
+  const currentCStandings = cStandings.slice(
+    indexOfFirstStanding,
+    indexOfLastStanding
+  );
 
-        GetConstructorStandings()
-            .then(data => this.setState({ cStandings: data, isLoading: false }));
-    }
+  return (
+    <div id="card">
+      <section id="header">
+        <h1 id="title">
+          <strong>Standings</strong>
+        </h1>
+        <ButtonGroup id="button">
+          <StyledButton size="small" onClick={() => setActive(true)}>
+            Driver
+          </StyledButton>
+          <StyledButton size="small" onClick={() => setActive(false)}>
+            Team
+          </StyledButton>
+        </ButtonGroup>
+      </section>
+      <Standings standings={currentDStandings} loading={loading} active={active} />
+      <Constructor standings={cStandings} loading={loading} active={active} />
+      <Pagination
+            standingsPerPage={standingsPerPage}
+            totalStandings={standings.length}
+            paginate={paginate}
+        />
+    </div>
+  );
+};
 
-    render() {
-        const { dStandings, cStandings, isLoading, driver, constructor } = this.state;
-        if (isLoading) {
-            return (
-                <div id="card">
-                    <ReactLoading type={"spinningBubbles"} color={'white'} height={'20%'} width={'20%'} />
-                </div>
-            )
-        }
-        if (driver) {
-            return (
-                <div id="card">
-                    <section id="header">
-                        <h1 id="title"><strong>Standings</strong></h1>
-                        <ButtonGroup id="button">
-                            <StyledButton size="small" onClick={this.handleDriver}>Driver</StyledButton>
-                            <StyledButton size="small" onClick={this.handleConstructor}>Team</StyledButton>
-                        </ButtonGroup>
-                    </section>
-                    {dStandings.map(data =>
-                        (
-                            <div key={data.pos}>
-                                <DriverStandings data={data} />
-                            </div>
-                        ))}
-                </div>
-            )
-        }
-        if (constructor) {
-            return (
-                <div id="card">
-                    <section id="header">
-                        <h1 id="title">Standings</h1>
-                        <ButtonGroup id="button">
-                            <StyledButton size="small" onClick={this.handleDriver}>Driver</StyledButton>
-                            <StyledButton size="small" onClick={this.handleConstructor}>Team</StyledButton>
-                        </ButtonGroup>
-                    </section>
-                    {cStandings.map(data =>
-                        (
-                            <div key={data.pos}>
-                                <ConstructorStandings data={data} />
-                            </div>
-                        ))}
-                </div>
-            )
-        }
-    }
-}
-
-export default standingsCard
-
+export default StandingsCard_;

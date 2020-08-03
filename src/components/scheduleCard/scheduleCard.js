@@ -17,9 +17,7 @@ function getDate(data){
   for(const { date: d } of data){
     dates.push(new Date(d))
   }
-  console.log(dates)
-   var result = closestIndexTo(dateToCompare, dates)
-   console.log(result)
+  var result = closestIndexTo(dateToCompare, dates)
   return result
 }
 
