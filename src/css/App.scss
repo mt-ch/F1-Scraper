@@ -27,30 +27,11 @@ body{
     background: color(primary);
     font-family: 'Orbitron';
   
-  #card{
-    display: grid;
-    margin: 1em;
-    align-content: start;
-
-    #bg{
-      position: relative; 
-      display: flex;
-    }
-  
-    #bg::before{
-      content: "";
-      background-image: url('../assets/textures/textureCard.jpg');
-      background-size: cover;
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
-      left: 0px;
-      opacity: 0.25;  
-      z-index: -1;
-      filter: grayscale(100%);
-    }
-  }
+  // #card{
+  //   display: grid;
+  //   //margin: 1em;
+  //   align-content: start;
+  // }
 }
 
 header{
@@ -59,12 +40,12 @@ header{
 
 //App
 .main-container{
-  display: grid;
-  grid-gap: 0em;
-  grid-template-columns: repeat(auto-fit, minmax(45vh, 1fr));
+  //display: grid;
+  //grid-gap: 0em;
+  //grid-template-columns: repeat(auto-fit, minmax(30vh, 1fr));
   //padding: 0 1em 0 1em;
-  max-width: 100vh;
-  margin: 0 auto;
+  //max-width: 100vh;
+  //margin: 0 auto;
 
   #standings{
     width: 100%;
@@ -74,7 +55,7 @@ header{
   #schedule{
     width: 100%;
     height: auto;
-    min-width: 30vh;
+    min-height: 25vh;
   }
   #results{
     width: 100%;
@@ -96,75 +77,71 @@ header{
 
 //Schedule Card
 #info{
+  display: flex;
+  flex-direction: row;
+  align-content: end;
+  background-image: url('../assets/textures/textureSchedule.jpg');
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  border-radius: 1em;
+
   h1 {
-    font-size: 2em;
+    font-size: 1.5rem;
     color: color(text);
     margin: 0;
   }
+
   h2 {
     font-size: 1.25em;
     font-weight: bold;
     color: color(text);
     margin: 0;
   }
+
   h3 {
-    font-size: 1em;
+    font-size: 0.9rem;
     font-weight: bold;
     color: color(text);
     margin: 0;
   }
 
   p{
-    font-size: 0.8em;
+    font-size: 0.8rem;
     font-weight: lighter;
     color: color(text);
     margin: 0;
   }
 
-  #img {
-    width: 2.5em;
-    height: 1.5em;
-    border-radius: 0.5em;
-    align-self: center;
-    margin-left: 0.5em;
-  }
-
-  #country-grid {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto 0fr;
-    grid-template-areas: 
-    "date    track"
-    "country track"
-    "raceInfo track"
-    ;
-    justify-content: space-between;
+  #race-info {
     align-content: center;
-    min-height: 19vh;
-  }
-  #country {
-    align-self: center;
+    padding: 1em 0 1em 0;
     display: flex;
-    flex-direction: row;
-    grid-area: country;
-  }
+    flex-direction: column;
+    padding: 1em;
 
-  #track{
-    width: 100%;
-    max-width: 5em;
-    height: auto;
-    grid-area: track;
-    align-self: center;
-    justify-self: start;
-  }
+    #country-info{
+      display: flex;
+      flex-direction: row;
 
-  #date{
-    grid-area: date;
-    align-self: end;
-  }
+      #flag {
+        width: 2em;
+        height: 1.5em;
+        border-width: 0.05em;
+        border-color: color(text);
+        border-radius: 0.5em;
+        border-style: solid;
+        align-self: center;
+        margin: 0 0.5em 0 0.5em;
+      }
+    }
 
-  #raceInfo{
-    grid-area: raceInfo;
+    #track{
+      width: 100px;
+      height: 100px;
+      grid-area: track;
+    }
   }
 } 
 

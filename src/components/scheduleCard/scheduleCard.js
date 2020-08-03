@@ -9,7 +9,6 @@ import closestIndexTo from 'date-fns/closestIndexTo';
 const MyPaper = styled(Paper)({
   background: "#6b6392",
   borderRadius: "1em",
-  padding: '0 0em 0 1em',
 });
 
 function getDate(data){
@@ -54,7 +53,7 @@ export class scheduleCard extends Component {
       );
     } else
       return (
-        <MyPaper id="card">
+        <div id="card">
           <Carousel
             next={() => {
             }}
@@ -71,7 +70,7 @@ export class scheduleCard extends Component {
               </div>
             ))}
           </Carousel>
-        </MyPaper>
+        </div>
       );
   }
 }
