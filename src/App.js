@@ -16,13 +16,13 @@ function App() {
     <div className="main-container">
       <section id="schedule">
         <ScheduleCard/>
-        <StandingsCard/>
+        {/* <StandingsCard/> */}
       </section>
       {/* <section id="standings">
         <StandingsCard/>
       </section> */}
       <section id="results">
-        <ResultsCard/> 
+        {/* <ResultsCard/>  */}
       </section>
     </div>
     </div>

@@ -4,12 +4,25 @@ import ReactLoading from "react-loading";
 import Carousel from "react-material-ui-carousel";
 import Round from "./round";
 import GetSchedule from "../../utils/getSchedule";
+import closestIndexTo from 'date-fns/closestIndexTo';
 
 const MyPaper = styled(Paper)({
   background: "#6b6392",
   borderRadius: "1em",
   padding: '0 0em 0 1em',
 });
+
+function getDate(data){
+  var dateToCompare = new Date()
+  var dates = [];
+  for(const { date: d } of data){
+    dates.push(new Date(d))
+  }
+  console.log(dates)
+   var result = closestIndexTo(dateToCompare, dates)
+   console.log(result)
+  return result
+}
 
 export class scheduleCard extends Component {
   constructor(props) {
@@ -44,14 +57,13 @@ export class scheduleCard extends Component {
         <MyPaper id="card">
           <Carousel
             next={() => {
-              /* Do stuff */
             }}
             prev={() => {
-              /* Do other stuff */
             }}
             indicators={false}
             autoPlay={false}
             animation={'fade'}
+            startAt={getDate(rSchedule)}
           >
             {rSchedule.map(schedule => (
               <div key={schedule.date}>
